@@ -1,23 +1,69 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+﻿---
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content="Portfólio de Adan William - Analista de TI e Desenvolvedor Full Stack" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style is:global>
+      /* Scrollbar vermelha */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0a0a0a; }
+      ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ff0000, #cc0000); border-radius: 4px; }
+      ::selection { background: #ff0000; color: white; }
+      
+      /* Animações */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes pulse-red {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.8; }
+      }
+      @keyframes glow-red {
+        0%, 100% { box-shadow: 0 0 20px rgba(255,0,0,0.2); }
+        50% { box-shadow: 0 0 40px rgba(255,0,0,0.4); }
+      }
+      
+      .animate-float { animation: float 3s ease-in-out infinite; }
+      .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+      .glow-red { animation: glow-red 2s ease-in-out infinite; }
+      
+      /* Cards com borda vermelha */
+      .card-red {
+        border: 1px solid rgba(255,0,0,0.15);
+        transition: all 0.3s ease;
+      }
+      .card-red:hover {
+        border-color: rgba(255,0,0,0.5);
+        box-shadow: 0 0 30px rgba(255,0,0,0.1);
+      }
+      
+      /* Badge vermelho */
+      .badge-red {
+        background: rgba(255,0,0,0.1);
+        border: 1px solid rgba(255,0,0,0.2);
+        color: #ff4444;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white min-h-screen antialiased">
+    <div class="relative overflow-x-hidden">
+      <slot />
+    </div>
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

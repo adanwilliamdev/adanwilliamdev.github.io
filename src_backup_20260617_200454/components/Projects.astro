@@ -1,0 +1,90 @@
+﻿---
+const projects = [
+  {
+    title: "🛰️ OrbNOC",
+    description: "Plataforma Enterprise NOC com monitoramento em tempo real, dashboards interativos, topologia de rede com React Flow, alertas via Telegram e ferramentas de diagnóstico.",
+    tech: ["Next.js 14", "React 18", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Socket.IO"],
+    link: "https://github.com/adanwilliamdev/OrbNOC",
+    featured: true,
+  },
+  {
+    title: "🏢 GiroERP",
+    description: "ERP Full Stack para gestão empresarial com dashboard em tempo real, controle de vendas, clientes, produtos, estoque, usuários e permissões. Progressive Web App (PWA).",
+    tech: ["Java 21", "Spring Boot 3", "JWT", "React 18", "TypeScript", "Tailwind CSS", "PostgreSQL", "Docker", "PWA"],
+    link: "https://github.com/adanwilliamdev/GiroERP",
+    featured: true,
+  },
+  {
+    title: "🛒 Ecommerce Full-Stack",
+    description: "Sistema completo de e-commerce com autenticação JWT, gerenciamento de produtos, carrinho de compras, controle de estoque e processamento de pedidos.",
+    tech: ["Java 17", "Spring Boot 3", "JWT", "React 18", "Vite", "Tailwind CSS", "PostgreSQL", "Docker"],
+    link: "https://github.com/adanwilliamdev/ecommerce-fullstack",
+    featured: false,
+  },
+  {
+    title: "🤖 SVA Platform",
+    description: "Plataforma inteligente de recrutamento com IA que conecta candidatos e recrutadores usando análise automática de compatibilidade com TF-IDF.",
+    tech: ["Python 3.12", "FastAPI", "React", "TypeScript", "Tailwind CSS", "SQLAlchemy", "SQLite", "Scikit-Learn"],
+    link: "https://github.com/adanwilliamdev/sva-platform",
+    featured: false,
+  },
+];
+---
+<section id="projects" class="py-20 px-4 max-w-6xl mx-auto">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Projetos em Destaque
+    </h2>
+    <p class="text-zinc-400 mt-2">Soluções que desenvolvi</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {
+      projects.map((project) => (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`block p-6 rounded-2xl border transition-all duration-300 backdrop-blur-sm group relative overflow-hidden ${
+            project.featured
+              ? "bg-gradient-to-br from-zinc-900/80 to-zinc-800/40 border-cyan-400/30 hover:border-cyan-400"
+              : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-600"
+          }`}
+        >
+          {
+            project.featured && (
+              <div class="absolute top-0 right-0 px-4 py-1 bg-gradient-to-l from-cyan-500 to-purple-500 text-xs font-bold rounded-bl-xl">
+                DESTAQUE
+              </div>
+            )
+          }
+          
+          <h3 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+            {project.title}
+          </h3>
+          
+          <p class="text-zinc-400 my-4 leading-relaxed">{project.description}</p>
+          
+          <div class="flex flex-wrap gap-2 mt-4">
+            {
+              project.tech.map((t) => (
+                <span
+                  key={t}
+                  class="px-3 py-1 text-xs font-mono text-cyan-300 bg-cyan-950/30 rounded-full border border-cyan-800/50"
+                >
+                  {t}
+                </span>
+              ))
+            }
+          </div>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="text-center mt-12">
+    <a href="https://github.com/adanwilliamdev" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-zinc-800 rounded-xl hover:bg-zinc-700 transition-colors border border-zinc-700">
+      Ver todos no GitHub →
+    </a>
+  </div>
+</section>
