@@ -1,6 +1,6 @@
-﻿---
+---
 // src/components/Projects.astro
-// Lista com 4 projetos: OrbNOC, Finanças Pessoais, Finanças Microserviços, SVA Platform
+// Lista com 4 projetos
 
 const projects = [
   {
@@ -16,9 +16,9 @@ const projects = [
   },
   {
     title: "💰 Finanças Pessoais",
-    problem: "Usuários precisavam de uma ferramenta completa para gerenciar suas finanças pessoais, mas as opções existentes eram complexas ou limitadas.",
-    solution: "Sistema completo de gestão financeira com controle de receitas, despesas, metas e importação de extratos bancários (CSV/OFX).",
-    metrics: "Sistema com autenticação JWT, dashboard interativo, relatórios e suporte a múltiplos usuários.",
+    problem: "Usuários precisavam de uma ferramenta completa para gerenciar suas finanças pessoais.",
+    solution: "Sistema completo com controle de receitas, despesas, metas e importação de extratos bancários.",
+    metrics: "Sistema com autenticação JWT, dashboard interativo e relatórios.",
     tech: ["Java 17", "Spring Boot 3", "Vue.js 3", "PostgreSQL", "JWT", "Docker"],
     link: "https://github.com/adanwilliamdev/financas-pessoais",
     demo: null,
@@ -27,9 +27,9 @@ const projects = [
   },
   {
     title: "🏗️ Finanças Microserviços",
-    problem: "O sistema monolítico de finanças precisava evoluir para uma arquitetura mais escalável e resiliente.",
-    solution: "Arquitetura de microserviços com Spring Cloud, API Gateway, Service Discovery (Eureka) e serviços independentes para autenticação, transações e relatórios.",
-    metrics: "4 microserviços funcionando com descoberta automática via Eureka e roteamento via API Gateway.",
+    problem: "O sistema monolítico precisava evoluir para uma arquitetura mais escalável.",
+    solution: "Arquitetura de microserviços com Spring Cloud, API Gateway e Eureka.",
+    metrics: "4 microserviços com descoberta automática via Eureka.",
     tech: ["Spring Cloud", "Eureka", "API Gateway", "Docker", "JWT", "PostgreSQL"],
     link: "https://github.com/adanwilliamdev/financas-microservicos",
     demo: null,
@@ -38,9 +38,9 @@ const projects = [
   },
   {
     title: "🤖 SVA Platform",
-    problem: "Processos de recrutamento manuais eram lentos, ineficientes e propensos a viés humano.",
-    solution: "Plataforma inteligente que utiliza NLP e TF-IDF para analisar currículos e vagas, gerando ranking automático de compatibilidade.",
-    metrics: "Redução de 60% no tempo de triagem de candidatos e matching mais preciso entre talentos e oportunidades.",
+    problem: "Processos de recrutamento manuais eram lentos e ineficientes.",
+    solution: "Plataforma com IA que analisa currículos e vagas usando TF-IDF.",
+    metrics: "Redução de 60% no tempo de triagem de candidatos.",
     tech: ["Python 3.12", "FastAPI", "React 18", "TypeScript", "Tailwind CSS", "SQLAlchemy", "Scikit-Learn"],
     link: "https://github.com/adanwilliamdev/sva-platform",
     demo: "https://sva-platform-frontend.onrender.com",
@@ -52,80 +52,51 @@ const projects = [
 
 <section id="projects" class="py-24 px-4 max-w-6xl mx-auto">
   <div class="text-center mb-16">
-    <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">
-      PORTFÓLIO
-    </span>
-    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">
-      Projetos em <span class="text-red-500">Destaque</span>
-    </h2>
+    <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">PORTFÓLIO</span>
+    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">Projetos em <span class="text-red-500">Destaque</span></h2>
     <p class="text-zinc-400 mt-2">Soluções que resolvem problemas reais</p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
     {projects.map((project, index) => (
-      <div
-        key={project.title}
-        class="group relative bg-black/40 rounded-2xl border border-red-500/10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/10"
-        style={{ animationDelay: `${index * 0.1}s` }}
-      >
+      <div key={project.title} class="group relative bg-black/40 rounded-2xl border border-red-500/10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/10" style={{ animationDelay: `${index * 0.1}s` }}>
         <div class="relative p-6">
           {project.featured && (
-            <div class="absolute top-0 right-0 px-4 py-1 bg-red-600 text-xs font-bold rounded-bl-xl shadow-lg shadow-red-500/25">
-              ⭐ DESTAQUE
-            </div>
+            <div class="absolute top-0 right-0 px-4 py-1 bg-red-600 text-xs font-bold rounded-bl-xl shadow-lg shadow-red-500/25">⭐ DESTAQUE</div>
           )}
-
-          <h3 class="text-2xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
-            {project.title}
-          </h3>
-
+          <h3 class="text-2xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">{project.title}</h3>
           <div class="mt-4 p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
             <span class="text-xs font-mono text-red-400 uppercase">⚠️ Problema</span>
             <p class="text-sm text-zinc-300 mt-1">{project.problem}</p>
           </div>
-
           <div class="mt-3 p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
             <span class="text-xs font-mono text-green-400 uppercase">✅ Solução</span>
             <p class="text-sm text-zinc-300 mt-1">{project.solution}</p>
           </div>
-
           {project.metrics && (
             <div class="mt-3 p-3 bg-red-500/5 border border-red-500/20 rounded-lg">
               <span class="text-xs font-mono text-red-400 uppercase">📊 Impacto</span>
               <p class="text-sm text-zinc-300 mt-1">{project.metrics}</p>
             </div>
           )}
-
           <div class="mt-4 p-3 bg-black/50 border border-red-500/10 rounded-lg">
             <span class="text-xs font-mono text-red-400 uppercase">🏗️ Arquitetura</span>
             <p class="text-sm font-mono text-red-300 mt-1">{project.architecture}</p>
           </div>
-
           <div class="flex flex-wrap gap-2 mt-4">
             {project.tech.slice(0, 5).map((t) => (
-              <span key={t} class="px-3 py-1 text-xs font-mono text-red-300 bg-red-950/30 rounded-full border border-red-800/50">
-                {t}
-              </span>
+              <span key={t} class="px-3 py-1 text-xs font-mono text-red-300 bg-red-950/30 rounded-full border border-red-800/50">{t}</span>
             ))}
             {project.tech.length > 5 && (
-              <span
-                class="px-3 py-1 text-xs font-mono text-zinc-400 bg-black/50 rounded-full border border-zinc-700 cursor-help relative group/tooltip"
-                title={project.tech.slice(5).join(', ')}
-              >
+              <span class="px-3 py-1 text-xs font-mono text-zinc-400 bg-black/50 rounded-full border border-zinc-700 cursor-help relative group/tooltip" title={project.tech.slice(5).join(', ')}>
                 +{project.tech.length - 5}
-                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-black border border-red-500/30 rounded-lg text-xs text-zinc-300 whitespace-nowrap opacity-0 group-hover/tooltip:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  {project.tech.slice(5).join(' • ')}
-                </span>
               </span>
             )}
           </div>
-
           <div class="mt-4 flex flex-wrap gap-3">
             <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-red-400 transition-colors duration-300">
               <span>Ver no GitHub</span>
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
             {project.demo && (
               <a href={project.demo} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-300 transition-colors duration-300 border border-green-500/20 px-3 py-1 rounded-lg hover:border-green-500/50">
