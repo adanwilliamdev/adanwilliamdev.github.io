@@ -1,4 +1,7 @@
 ﻿---
+// src/components/Projects.astro
+// Lista com 4 projetos: OrbNOC, Finanças Pessoais, Finanças Microserviços, SVA Platform
+
 const projects = [
   {
     title: "🛰️ OrbNOC",
@@ -12,40 +15,41 @@ const projects = [
     architecture: "React → Node.js → PostgreSQL → Docker"
   },
   {
-    title: "🏢 GiroERP",
-    problem: "Pequenas empresas precisavam de um sistema de gestão integrado, mas as soluções existentes eram caras e complexas.",
-    solution: "ERP completo com gestão de vendas, clientes, produtos, estoque e usuários, disponível como PWA com suporte offline.",
-    metrics: "Redução de 40% no tempo de geração de relatórios operacionais.",
-    tech: ["Java 21", "Spring Boot 3", "JWT", "React 18", "TypeScript", "Tailwind CSS", "PostgreSQL", "Docker", "PWA"],
-    link: "https://github.com/adanwilliamdev/GiroERP",
+    title: "💰 Finanças Pessoais",
+    problem: "Usuários precisavam de uma ferramenta completa para gerenciar suas finanças pessoais, mas as opções existentes eram complexas ou limitadas.",
+    solution: "Sistema completo de gestão financeira com controle de receitas, despesas, metas e importação de extratos bancários (CSV/OFX).",
+    metrics: "Sistema com autenticação JWT, dashboard interativo, relatórios e suporte a múltiplos usuários.",
+    tech: ["Java 17", "Spring Boot 3", "Vue.js 3", "PostgreSQL", "JWT", "Docker"],
+    link: "https://github.com/adanwilliamdev/financas-pessoais",
     demo: null,
     featured: true,
-    architecture: "React → Spring Boot → PostgreSQL → Docker"
+    architecture: "Vue.js → Spring Boot → PostgreSQL → Docker"
   },
   {
-    title: "🛒 Ecommerce Full-Stack",
-    problem: "Negócios online precisavam de uma plataforma de vendas completa e escalável.",
-    solution: "Sistema completo de e-commerce com autenticação JWT, carrinho, processamento de pedidos e painel administrativo.",
-    metrics: "Processamento de pedidos em tempo real com controle de estoque automático.",
-    tech: ["Java 17", "Spring Boot 3", "JWT", "React 18", "Vite", "Tailwind CSS", "PostgreSQL", "Docker"],
-    link: "https://github.com/adanwilliamdev/ecommerce-fullstack",
+    title: "🏗️ Finanças Microserviços",
+    problem: "O sistema monolítico de finanças precisava evoluir para uma arquitetura mais escalável e resiliente.",
+    solution: "Arquitetura de microserviços com Spring Cloud, API Gateway, Service Discovery (Eureka) e serviços independentes para autenticação, transações e relatórios.",
+    metrics: "4 microserviços funcionando com descoberta automática via Eureka e roteamento via API Gateway.",
+    tech: ["Spring Cloud", "Eureka", "API Gateway", "Docker", "JWT", "PostgreSQL"],
+    link: "https://github.com/adanwilliamdev/financas-microservicos",
     demo: null,
     featured: false,
-    architecture: "React → Spring Boot → PostgreSQL → Docker"
+    architecture: "Spring Cloud → Eureka → API Gateway → PostgreSQL"
   },
   {
     title: "🤖 SVA Platform",
-    problem: "Processos de recrutamento manuais eram lentos e ineficientes.",
-    solution: "Plataforma com IA que analisa currículos e vagas usando TF-IDF, gerando ranking de compatibilidade.",
-    metrics: "Redução de 60% no tempo de triagem de candidatos.",
-    tech: ["Python 3.12", "FastAPI", "React", "TypeScript", "Tailwind CSS", "SQLAlchemy", "SQLite", "Scikit-Learn"],
+    problem: "Processos de recrutamento manuais eram lentos, ineficientes e propensos a viés humano.",
+    solution: "Plataforma inteligente que utiliza NLP e TF-IDF para analisar currículos e vagas, gerando ranking automático de compatibilidade.",
+    metrics: "Redução de 60% no tempo de triagem de candidatos e matching mais preciso entre talentos e oportunidades.",
+    tech: ["Python 3.12", "FastAPI", "React 18", "TypeScript", "Tailwind CSS", "SQLAlchemy", "Scikit-Learn"],
     link: "https://github.com/adanwilliamdev/sva-platform",
-    demo: null,
+    demo: "https://sva-platform-frontend.onrender.com",
     featured: false,
     architecture: "React → FastAPI → SQLite → IA (Scikit-Learn)"
-  },
+  }
 ];
 ---
+
 <section id="projects" class="py-24 px-4 max-w-6xl mx-auto">
   <div class="text-center mb-16">
     <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">
@@ -57,7 +61,7 @@ const projects = [
     <p class="text-zinc-400 mt-2">Soluções que resolvem problemas reais</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
     {projects.map((project, index) => (
       <div
         key={project.title}
@@ -70,33 +74,33 @@ const projects = [
               ⭐ DESTAQUE
             </div>
           )}
-          
+
           <h3 class="text-2xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
             {project.title}
           </h3>
-          
+
           <div class="mt-4 p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
             <span class="text-xs font-mono text-red-400 uppercase">⚠️ Problema</span>
             <p class="text-sm text-zinc-300 mt-1">{project.problem}</p>
           </div>
-          
+
           <div class="mt-3 p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
             <span class="text-xs font-mono text-green-400 uppercase">✅ Solução</span>
             <p class="text-sm text-zinc-300 mt-1">{project.solution}</p>
           </div>
-          
+
           {project.metrics && (
             <div class="mt-3 p-3 bg-red-500/5 border border-red-500/20 rounded-lg">
               <span class="text-xs font-mono text-red-400 uppercase">📊 Impacto</span>
               <p class="text-sm text-zinc-300 mt-1">{project.metrics}</p>
             </div>
           )}
-          
+
           <div class="mt-4 p-3 bg-black/50 border border-red-500/10 rounded-lg">
             <span class="text-xs font-mono text-red-400 uppercase">🏗️ Arquitetura</span>
             <p class="text-sm font-mono text-red-300 mt-1">{project.architecture}</p>
           </div>
-          
+
           <div class="flex flex-wrap gap-2 mt-4">
             {project.tech.slice(0, 5).map((t) => (
               <span key={t} class="px-3 py-1 text-xs font-mono text-red-300 bg-red-950/30 rounded-full border border-red-800/50">
@@ -104,7 +108,7 @@ const projects = [
               </span>
             ))}
             {project.tech.length > 5 && (
-              <span 
+              <span
                 class="px-3 py-1 text-xs font-mono text-zinc-400 bg-black/50 rounded-full border border-zinc-700 cursor-help relative group/tooltip"
                 title={project.tech.slice(5).join(', ')}
               >
@@ -115,7 +119,7 @@ const projects = [
               </span>
             )}
           </div>
-          
+
           <div class="mt-4 flex flex-wrap gap-3">
             <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-red-400 transition-colors duration-300">
               <span>Ver no GitHub</span>
