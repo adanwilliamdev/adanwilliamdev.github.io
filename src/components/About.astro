@@ -1,29 +1,39 @@
-﻿<section id="about" class="py-24 px-4 max-w-4xl mx-auto">
-  <div class="text-center fade-in-up">
-    <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">
-      SOBRE MIM
-    </span>
-    
-    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">
-      Minha <span class="text-red-500">trajetória</span>
+---
+const points = [
+  {
+    label: "01 · Infraestrutura",
+    text: "Comecei na infraestrutura e redes, como Técnico de Suporte e depois Analista de NOC. Foram 5+ anos garantindo a disponibilidade de serviços críticos para mais de 12 mil assinantes em um ambiente ISP.",
+  },
+  {
+    label: "02 · Full Stack",
+    text: "Hoje atuo como Analista de TI e Desenvolvedor Full Stack, unindo essa vivência de infraestrutura ao desenvolvimento — entendendo como o código se comporta desde a arquitetura até o monitoramento em produção.",
+  },
+  {
+    label: "03 · Engenharia",
+    text: "Construo sistemas robustos, escaláveis e observáveis, aplicando boas práticas de engenharia de software e trazendo a bagagem de infraestrutura para criar soluções que funcionam no mundo real.",
+  },
+];
+---
+<section id="about" class="py-28 px-4 max-w-5xl mx-auto">
+  <div class="mb-16">
+    <span class="eyebrow">Sobre mim</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
+      Da sala de racks<br class="hidden md:block" /> ao código em produção
     </h2>
-    
-    <div class="space-y-6 text-zinc-300 text-lg leading-relaxed mt-8">
-      <p class="bg-black/50 p-6 rounded-xl border border-red-500/10 hover:border-red-500/30 transition-all duration-300">
-        Comecei minha carreira na <span class="text-red-400 font-semibold">infraestrutura e redes</span>, atuando como Técnico de Suporte e depois como Analista de NOC. Foram 5+ anos garantindo a disponibilidade de serviços críticos para mais de <span class="text-red-400 font-semibold">12 mil assinantes</span> em um ambiente ISP.
-      </p>
-      
-      <p class="bg-black/50 p-6 rounded-xl border border-red-500/10 hover:border-red-500/30 transition-all duration-300">
-        Hoje, unindo essa vivência em infraestrutura com minha paixão por desenvolvimento, atuo como <span class="text-red-400 font-semibold">Analista de TI e Desenvolvedor Full Stack</span>. Minha grande diferença é entender profundamente como as aplicações se comportam em ambientes reais — desde a arquitetura do código até o monitoramento em produção.
-      </p>
-      
-      <p class="bg-black/50 p-6 rounded-xl border border-red-500/10 hover:border-red-500/30 transition-all duration-300">
-        Construo <span class="text-red-400 font-semibold">sistemas robustos, escaláveis e observáveis</span>, aplicando boas práticas de engenharia de software e aproveitando minha experiência em infraestrutura para criar soluções que realmente funcionam no mundo real.
-      </p>
-      
-      <blockquote class="border-l-4 border-red-500 pl-6 italic text-zinc-400 text-xl bg-gradient-to-r from-red-950/10 to-transparent p-6 rounded-r-xl">
-        "Transformando experiência em infraestrutura em software robusto, escalável e observável."
-      </blockquote>
-    </div>
   </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {points.map((point) => (
+      <div class="panel panel-hover p-6">
+        <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal)] tracking-wide">
+          {point.label}
+        </span>
+        <p class="text-[var(--color-ink-dim)] leading-relaxed mt-3">{point.text}</p>
+      </div>
+    ))}
+  </div>
+
+  <blockquote class="mt-10 border-l-2 border-[var(--color-signal)] pl-6 text-[var(--color-ink)]/90 text-xl md:text-2xl font-[family-name:var(--font-display)] font-medium leading-snug">
+    Transformando experiência em infraestrutura em software robusto, escalável e observável.
+  </blockquote>
 </section>

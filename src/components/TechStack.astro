@@ -1,4 +1,4 @@
-﻿---
+---
 const techs = [
   { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
   { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
@@ -8,44 +8,32 @@ const techs = [
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
   { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
   { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
-  { 
-    name: "AWS", 
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-  },
+  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
   { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
 ];
 ---
-<section id="tech" class="py-24 px-4 bg-black/50">
+<section id="tech" class="py-28 px-4 bg-[var(--color-surface)]/30 border-y border-[var(--color-line)]">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">
-        TECNOLOGIAS
-      </span>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">
-        Tech <span class="text-red-500">Stack</span>
+    <div class="mb-16">
+      <span class="eyebrow">Tecnologias</span>
+      <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
+        Tech stack
       </h2>
-      <p class="text-zinc-400 mt-2">Ferramentas que domino no dia a dia</p>
+      <p class="text-[var(--color-ink-dim)] mt-3">Ferramentas que domino no dia a dia.</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-items-center">
-      {techs.map((tech, index) => (
-        <div
-          key={tech.name}
-          class="group relative p-6 bg-black/50 rounded-xl border border-red-500/10 text-center hover:scale-105 transition-all duration-300 hover:border-red-500/50 hover:shadow-xl hover:shadow-red-500/10 cursor-default w-full max-w-[160px]"
-          style={{ animationDelay: `${index * 0.05}s` }}
-        >
-          <div class="h-16 flex items-center justify-center mb-3">
-            <img 
-              src={tech.icon} 
-              alt={tech.name}
-              class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300 brightness-90 group-hover:brightness-100"
-              loading="lazy"
-            />
-          </div>
-          <span class="text-sm font-mono text-zinc-400 group-hover:text-white transition-colors duration-300">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      {techs.map((tech) => (
+        <div class="panel panel-hover p-5 flex flex-col items-center gap-3 text-center">
+          <img
+            src={tech.icon}
+            alt={tech.name}
+            class="w-10 h-10 object-contain opacity-80"
+            loading="lazy"
+          />
+          <span class="text-sm font-[family-name:var(--font-mono)] text-[var(--color-ink-dim)]">
             {tech.name}
           </span>
-          <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/0 via-red-500/0 to-red-500/0 group-hover:via-red-500/5 transition-all duration-500"></div>
         </div>
       ))}
     </div>

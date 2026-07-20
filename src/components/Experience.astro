@@ -1,69 +1,54 @@
-﻿<section id="experience" class="py-24 px-4 max-w-6xl mx-auto bg-black/30">
-  <div class="text-center mb-16">
-    <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">
-      EXPERIÊNCIA
-    </span>
-    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">
-      Trajetória <span class="text-red-500">Profissional</span>
+---
+const roles = [
+  {
+    period: "2021 — presente",
+    title: "Analista de TI",
+    org: "Infraestrutura e Desenvolvimento",
+    items: [
+      "Administração de servidores Windows e Linux",
+      "Monitoramento de infraestrutura com Zabbix e Grafana",
+      "Suporte N2/N3 e resolução de incidentes críticos",
+      "Automação com Python e PowerShell",
+      "Desenvolvimento Full Stack para gestão corporativa",
+    ],
+  },
+  {
+    period: "2020 — 2021",
+    title: "Técnico de Suporte",
+    org: "Infraestrutura e Redes",
+    items: [
+      "Manutenção de redes e servidores",
+      "Atendimento a chamados e resolução de problemas",
+      "Configuração de firewall e segurança",
+      "Implementação de melhorias na infraestrutura",
+    ],
+  },
+];
+---
+<section id="experience" class="py-28 px-4 max-w-6xl mx-auto">
+  <div class="mb-16">
+    <span class="eyebrow">Experiência</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
+      Trajetória profissional
     </h2>
-    <p class="text-zinc-400 mt-2">5+ anos construindo soluções em ambientes corporativos</p>
+    <p class="text-[var(--color-ink-dim)] mt-3">5+ anos construindo e sustentando soluções em ambientes corporativos.</p>
   </div>
 
-  <!-- Grid lado a lado -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-    
-    <!-- Experiência 1 -->
-    <div class="bg-black/50 p-6 rounded-xl border border-red-500/10 hover:border-red-500/30 transition-all duration-300 hover:scale-[1.02]">
-      <span class="text-sm font-mono text-red-400">2021 - Presente</span>
-      <h3 class="text-2xl font-bold text-white mt-2">Analista de TI</h3>
-      <p class="text-red-400 font-medium">Infraestrutura e Desenvolvimento</p>
-      <ul class="mt-4 space-y-2 text-zinc-400">
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Administração de servidores Windows e Linux</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Monitoramento de infraestrutura com Zabbix e Grafana</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Suporte N2/N3 e resolução de incidentes críticos</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Automação com Python e PowerShell</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Desenvolvimento Full Stack para gestão corporativa</span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Experiência 2 -->
-    <div class="bg-black/50 p-6 rounded-xl border border-red-500/10 hover:border-red-500/30 transition-all duration-300 hover:scale-[1.02]">
-      <span class="text-sm font-mono text-red-400">2020 - 2021</span>
-      <h3 class="text-2xl font-bold text-white mt-2">Técnico de Suporte</h3>
-      <p class="text-red-400 font-medium">Infraestrutura e Redes</p>
-      <ul class="mt-4 space-y-2 text-zinc-400">
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Manutenção de redes e servidores</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Atendimento a chamados e resolução de problemas</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Configuração de firewall e segurança</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-red-400 mt-1">▸</span>
-          <span>Implementação de melhorias na infraestrutura</span>
-        </li>
-      </ul>
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {roles.map((role) => (
+      <div class="panel panel-hover p-7">
+        <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal)]">{role.period}</span>
+        <h3 class="text-2xl font-[family-name:var(--font-display)] font-semibold text-[var(--color-ink)] mt-2">{role.title}</h3>
+        <p class="text-[var(--color-ink-dim)] font-medium">{role.org}</p>
+        <ul class="mt-5 space-y-2.5">
+          {role.items.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm text-[var(--color-ink-dim)]">
+              <span class="text-[var(--color-signal)] mt-0.5 font-[family-name:var(--font-mono)]">▸</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
   </div>
 </section>

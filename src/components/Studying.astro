@@ -1,19 +1,27 @@
-﻿<section id="studying" class="py-24 px-4 max-w-6xl mx-auto bg-black/30">
-  <div class="text-center mb-12">
-    <span class="text-sm font-mono text-red-400 badge-red px-4 py-1 rounded-full">
-      APRENDIZADO CONTÍNUO
-    </span>
-    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">
-      O que estou <span class="text-red-500">estudando</span>
+---
+const topics = [
+  "Kubernetes",
+  "Microsserviços",
+  "AWS",
+  "Arquitetura de Sistemas",
+  "Observabilidade",
+  "CI/CD",
+  "Segurança",
+  "OpenTelemetry",
+];
+---
+<section id="studying" class="py-28 px-4 max-w-5xl mx-auto">
+  <div class="mb-12 text-center">
+    <span class="eyebrow">Aprendizado contínuo</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
+      O que estou estudando
     </h2>
-    <p class="text-zinc-400 mt-2">Sempre evoluindo e me atualizando</p>
+    <p class="text-[var(--color-ink-dim)] mt-3">Sempre evoluindo e me atualizando.</p>
   </div>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-    {["🚀 Kubernetes", "☸️ Microsserviços", "☁️ AWS", "🏗️ Arquitetura de Sistemas", "📊 Observabilidade", "🔄 CI/CD", "🔒 Segurança", "📱 Mobile"].map((item) => (
-      <div class="p-4 bg-black/50 rounded-xl border border-red-500/10 text-center hover:border-red-500/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/10">
-        <span class="text-sm font-mono text-zinc-300">{item}</span>
-      </div>
+  <div class="flex flex-wrap justify-center gap-3">
+    {topics.map((item) => (
+      <span class="tag !text-sm !px-4 !py-2 panel-hover">{item}</span>
     ))}
   </div>
 </section>

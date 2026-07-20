@@ -1,1 +1,197 @@
 @import "tailwindcss";
+
+@theme {
+  /* Base surfaces — graphite, not pure black */
+  --color-bg: #0a0b0d;
+  --color-surface: #121419;
+  --color-surface-2: #191c22;
+  --color-line: #2a2d34;
+
+  /* Ink */
+  --color-ink: #f3f1ea;
+  --color-ink-dim: #a7a9b1;
+  --color-ink-faint: #6b6e77;
+
+  /* Signal — amber, the color of a status light on a monitoring rack */
+  --color-signal: #e3a548;
+  --color-signal-dim: #7a5b2c;
+  --color-signal-soft: #f0c184;
+
+  /* Secondary status accents, used sparingly */
+  --color-online: #5ec49a;
+  --color-alert: #d9704f;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: #0a0b0d;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-signal-dim);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .grid-field {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--color-signal);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-signal);
+    box-shadow: 0 0 0 3px rgba(227, 165, 72, 0.18);
+  }
+
+  .panel {
+    background: color-mix(in oklab, var(--color-surface) 92%, transparent);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+  }
+
+  .panel-hover {
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .panel-hover:hover {
+    border-color: color-mix(in oklab, var(--color-signal) 45%, var(--color-line));
+    transform: translateY(-3px);
+    box-shadow: 0 24px 48px -24px rgba(227, 165, 72, 0.18);
+  }
+
+  .btn-signal {
+    background: var(--color-signal);
+    color: #0a0b0d;
+    font-weight: 600;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 12px 30px -12px rgba(227, 165, 72, 0.55);
+  }
+  .btn-signal:hover {
+    background: var(--color-signal-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -12px rgba(227, 165, 72, 0.65);
+  }
+
+  .btn-ghost {
+    background: color-mix(in oklab, var(--color-surface) 80%, transparent);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  }
+  .btn-ghost:hover {
+    border-color: color-mix(in oklab, var(--color-signal) 50%, var(--color-line));
+    background: var(--color-surface-2);
+    transform: translateY(-2px);
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    color: var(--color-ink-dim);
+    background: color-mix(in oklab, var(--color-surface-2) 90%, transparent);
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--color-online);
+    box-shadow: 0 0 0 3px rgba(94, 196, 154, 0.2);
+    animation: pulse-dot 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(94, 196, 154, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(94, 196, 154, 0.06);
+  }
+}
+
+@keyframes trace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.signal-trace {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: trace 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
