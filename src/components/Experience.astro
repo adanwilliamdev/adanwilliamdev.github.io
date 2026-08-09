@@ -1,0 +1,53 @@
+---
+const roles = [
+  {
+    period: "nov. 2020 — atual",
+    title: "Analista de TI",
+    org: "Conectv · Pirapora, MG",
+    items: [
+      "Monitoramento de mais de 12.000 clientes em ambiente ISP",
+      "Atuação N2/N3 na resolução de incidentes críticos",
+      "Administração de servidores Linux e Windows Server",
+      "Monitoramento com Zabbix e PRTG",
+      "Automação de processos internos",
+    ],
+  },
+  {
+    period: "ago. 2025 — abr. 2027",
+    title: "Análise e Desenvolvimento de Sistemas",
+    org: "Centro Universitário UniFatecie",
+    items: [
+      "Formação voltada a engenharia de software e desenvolvimento web",
+      "Aplicação prática dos estudos em projetos pessoais no GitHub",
+      "Aprofundamento em arquitetura de sistemas e boas práticas",
+    ],
+  },
+];
+---
+<section id="experience" class="py-28 px-4 max-w-6xl mx-auto">
+  <div class="mb-16">
+    <span class="eyebrow">Experiência</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
+      Trajetória profissional
+    </h2>
+    <p class="text-[var(--color-ink-dim)] mt-3">5+ anos construindo e sustentando soluções em ambientes corporativos.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {roles.map((role) => (
+      <div class="panel panel-hover p-7">
+        <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal)]">{role.period}</span>
+        <h3 class="text-2xl font-[family-name:var(--font-display)] font-semibold text-[var(--color-ink)] mt-2">{role.title}</h3>
+        <p class="text-[var(--color-ink-dim)] font-medium">{role.org}</p>
+        <ul class="mt-5 space-y-2.5">
+          {role.items.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm text-[var(--color-ink-dim)]">
+              <span class="text-[var(--color-signal)] mt-0.5 font-[family-name:var(--font-mono)]">▸</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

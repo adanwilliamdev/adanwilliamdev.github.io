@@ -31,7 +31,7 @@ export default function Typewriter() {
   return (
     <span className="flex items-center gap-1">
       <span>{roles[index].substring(0, subIndex)}</span>
-      <span className="w-[3px] h-7 bg-[var(--color-accent)] animate-pulse"></span>
+      <span className="w-[3px] h-7 bg-[var(--color-signal)] animate-pulse"></span>
     </span>
   );
 }
