@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 const roles = [
-  "Desenvolvedor Full Stack",
-  "Analista de TI",
-  "Arquiteto de Soluções",
-  "Especialista em Observabilidade"
+  "Desenvolvedor Backend Java",
+  "Spring Boot & React",
+  "Full Stack Developer",
+  "Ex-Infraestrutura & NOC"
 ];
 
 export default function Typewriter() {
@@ -31,7 +31,7 @@ export default function Typewriter() {
   return (
     <span className="flex items-center gap-1">
       <span>{roles[index].substring(0, subIndex)}</span>
-      <span className="w-[3px] h-7 bg-[var(--color-signal)] animate-pulse"></span>
+      <span className="w-[3px] h-7 bg-[var(--color-accent)] animate-pulse"></span>
     </span>
   );
 }

@@ -1,29 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Base surfaces — graphite, not pure black */
-  --color-bg: #0a0b0d;
-  --color-surface: #121419;
-  --color-surface-2: #191c22;
-  --color-line: #2a2d34;
+  /* Base surfaces — near-black, warm undertone, not pure black */
+  --color-bg: #0c0d0f;
+  --color-surface: #16171a;
+  --color-line: #26272b;
+  --color-line-soft: #1c1d21;
 
   /* Ink */
-  --color-ink: #f3f1ea;
-  --color-ink-dim: #a7a9b1;
-  --color-ink-faint: #6b6e77;
+  --color-ink: #ece9e2;
+  --color-ink-dim: #9a9b9f;
+  --color-ink-faint: #5c5d61;
 
-  /* Signal — amber, the color of a status light on a monitoring rack */
-  --color-signal: #e3a548;
-  --color-signal-dim: #7a5b2c;
-  --color-signal-soft: #f0c184;
+  /* Single restrained accent — muted brass, used sparingly */
+  --color-accent: #c98a4f;
+  --color-accent-soft: #dba876;
 
-  /* Secondary status accents, used sparingly */
-  --color-online: #5ec49a;
-  --color-alert: #d9704f;
-
-  --font-display: "Space Grotesk", "Inter", sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
 @layer base {
@@ -39,8 +34,8 @@
   }
 
   ::selection {
-    background: var(--color-signal);
-    color: #0a0b0d;
+    background: var(--color-accent);
+    color: #0c0d0f;
   }
 
   ::-webkit-scrollbar {
@@ -54,81 +49,56 @@
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-signal-dim);
+    background: var(--color-ink-faint);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 }
 
 @layer components {
-  .grid-field {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    color: var(--color-signal);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    letter-spacing: 0.12em;
+    color: var(--color-ink-faint);
     text-transform: uppercase;
   }
 
-  .eyebrow::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--color-signal);
-    box-shadow: 0 0 0 3px rgba(227, 165, 72, 0.18);
-  }
-
   .panel {
-    background: color-mix(in oklab, var(--color-surface) 92%, transparent);
+    background: var(--color-surface);
     border: 1px solid var(--color-line);
-    border-radius: 1rem;
+    border-radius: 0.75rem;
   }
 
   .panel-hover {
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.25s ease;
   }
   .panel-hover:hover {
-    border-color: color-mix(in oklab, var(--color-signal) 45%, var(--color-line));
-    transform: translateY(-3px);
-    box-shadow: 0 24px 48px -24px rgba(227, 165, 72, 0.18);
+    border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-line));
   }
 
-  .btn-signal {
-    background: var(--color-signal);
-    color: #0a0b0d;
+  .btn-solid {
+    background: var(--color-ink);
+    color: var(--color-bg);
     font-weight: 600;
-    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 12px 30px -12px rgba(227, 165, 72, 0.55);
+    transition: opacity 0.2s ease;
   }
-  .btn-signal:hover {
-    background: var(--color-signal-soft);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 36px -12px rgba(227, 165, 72, 0.65);
+  .btn-solid:hover {
+    opacity: 0.85;
   }
 
   .btn-ghost {
-    background: color-mix(in oklab, var(--color-surface) 80%, transparent);
+    background: transparent;
     border: 1px solid var(--color-line);
     color: var(--color-ink);
-    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
   }
   .btn-ghost:hover {
-    border-color: color-mix(in oklab, var(--color-signal) 50%, var(--color-line));
-    background: var(--color-surface-2);
-    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    color: var(--color-accent-soft);
   }
 
   .tag {
@@ -136,26 +106,25 @@
     font-size: 0.68rem;
     letter-spacing: 0.02em;
     color: var(--color-ink-dim);
-    background: color-mix(in oklab, var(--color-surface-2) 90%, transparent);
+    background: transparent;
     border: 1px solid var(--color-line);
-    border-radius: 999px;
-    padding: 0.3rem 0.7rem;
+    border-radius: 0.35rem;
+    padding: 0.28rem 0.6rem;
   }
 
-  .live-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: var(--color-online);
-    box-shadow: 0 0 0 3px rgba(94, 196, 154, 0.2);
-    animation: pulse-dot 2.2s ease-in-out infinite;
+  .link-accent {
+    color: var(--color-ink-dim);
+    transition: color 0.2s ease;
+  }
+  .link-accent:hover {
+    color: var(--color-accent-soft);
   }
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -163,28 +132,7 @@
   }
 }
 .fade-up {
-  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes pulse-dot {
-  0%,
-  100% {
-    box-shadow: 0 0 0 3px rgba(94, 196, 154, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 0 6px rgba(94, 196, 154, 0.06);
-  }
-}
-
-@keyframes trace {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-.signal-trace {
-  stroke-dasharray: 1400;
-  stroke-dashoffset: 1400;
-  animation: trace 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.3s;
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

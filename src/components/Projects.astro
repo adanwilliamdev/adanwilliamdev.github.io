@@ -2,147 +2,77 @@
 const projects = [
   {
     title: "MedFlow",
-    icon: "🩺",
-    problem: "Clínicas médicas dependem de planilhas e sistemas fragmentados para gerenciar pacientes, agenda e prontuários, o que gera retrabalho e falhas de comunicação.",
-    solution: "Sistema completo de gestão de clínicas com cadastro de pacientes e médicos, agenda de consultas, prontuário eletrônico e módulo financeiro.",
-    metrics: "Dashboard com indicadores em tempo real, filas assíncronas com RabbitMQ e cache com Redis para alta performance.",
-    tech: ["Java 17", "Spring Boot 3", "Spring Security", "React 19", "Vite", "PostgreSQL", "Redis", "RabbitMQ", "Flyway"],
+    description: "Sistema completo de gestão de clínicas médicas: cadastro de pacientes e médicos, agenda de consultas, prontuário eletrônico e controle financeiro, com dashboard de indicadores.",
+    tech: ["Java 17", "Spring Boot 3", "Spring Security", "JWT", "PostgreSQL", "Redis", "RabbitMQ", "React 19"],
     link: "https://github.com/adanwilliamdev/MedFlow",
-    demo: null,
-    featured: true,
-    architecture: "React → Spring Boot → PostgreSQL / Redis / RabbitMQ",
   },
   {
-    title: "Encore — Event Platform",
-    icon: "🎟️",
-    problem: "Plataformas de venda de ingressos precisam lidar com alta concorrência na reserva de assentos sem vender o mesmo lugar duas vezes.",
-    solution: "Plataforma de eventos com reserva temporária de ingressos via Redis, checkout, emissão de pedidos e controle de permissões por papel (cliente, organizador, admin).",
-    metrics: "Disponibilidade atualizada em tempo real via WebSocket (STOMP) e migrações de banco automatizadas com Liquibase.",
-    tech: ["Java 17", "Spring Boot 3", "React 18", "TypeScript", "Redis", "RabbitMQ", "WebSocket", "PostgreSQL", "Docker"],
-    link: "https://github.com/adanwilliamdev/event-platform",
-    demo: null,
-    featured: true,
-    architecture: "React/TS → Spring Boot → WebSocket / Redis / RabbitMQ → PostgreSQL",
+    title: "Minha Biblioteca",
+    description: "Gerenciador full stack de filmes e séries, com importação automática via TMDB, controle de progresso por episódio e dashboard de estatísticas.",
+    tech: ["Java 17", "Spring Boot 3", "JPA", "Hibernate", "PostgreSQL", "React", "TypeScript"],
+    link: "https://github.com/adanwilliamdev/biblioteca-fullstack",
   },
   {
-    title: "Burger & Pizza House — ERP",
-    icon: "🍕",
-    problem: "Pizzarias e hamburguerias precisam controlar produtos, ingredientes e estoque em tempo real para evitar ruptura e prejuízo.",
-    solution: "ERP com gestão de produtos, controle de estoque com alerta de itens críticos, acompanhamento de pedidos e dashboard de vendas.",
-    metrics: "Autenticação JWT, temas claro/escuro/automático e atalhos de teclado para agilizar o atendimento.",
-    tech: ["Node.js", "Express", "TypeScript", "Prisma ORM", "React", "Vite", "Tailwind CSS"],
-    link: "https://github.com/adanwilliamdev/Burger-Pizza-House",
-    demo: null,
-    featured: true,
-    architecture: "React/TS → Express/Prisma → SQLite",
+    title: "Finanças Microsserviços",
+    description: "Sistema de finanças pessoais reestruturado como arquitetura de microsserviços, aplicando Spring Cloud para comunicação entre serviços.",
+    tech: ["Java", "Spring Cloud", "Microsserviços"],
+    link: "https://github.com/adanwilliamdev/financas-microservicos",
   },
   {
-    title: "Finanças Pessoais",
-    icon: "💰",
-    problem: "Usuários precisavam de uma ferramenta completa para gerenciar receitas, despesas e metas financeiras em um único lugar.",
-    solution: "Sistema web com controle de receitas, despesas, metas e importação de extratos bancários (CSV/OFX).",
-    metrics: "Autenticação JWT, dashboards interativos e precisão monetária com BigDecimal. Base que também evoluiu para uma versão em microsserviços com Spring Cloud.",
-    tech: ["Java 17", "Spring Boot 3", "Vue.js 3", "PostgreSQL", "JWT", "Docker"],
-    link: "https://github.com/adanwilliamdev/financas-pessoais",
-    demo: null,
-    featured: false,
-    architecture: "Vue.js → Spring Boot → PostgreSQL → Docker",
-  },
-  {
-    title: "OrbNOC",
-    icon: "🛰️",
-    problem: "Times de infraestrutura perdiam tempo demais visualizando incidentes de rede em tempo real, o que aumentava o tempo de inatividade.",
-    solution: "Plataforma NOC para monitoramento contínuo de infraestrutura, servidores e serviços críticos, com topologia de rede e ferramentas de diagnóstico integradas.",
-    metrics: "Atualização em tempo real via WebSocket, monitorando disponibilidade e desempenho de múltiplos dispositivos simultaneamente.",
-    tech: ["Next.js 14", "React 18", "TypeScript", "Node.js", "Prisma", "PostgreSQL", "Socket.IO"],
-    link: "https://github.com/adanwilliamdev/OrbNOC",
-    demo: null,
-    featured: false,
-    architecture: "React → Node.js → PostgreSQL → Docker",
-  },
-  {
-    title: "SVA Platform",
-    icon: "🤖",
-    problem: "Processos manuais de triagem de currículos em recrutamento são lentos e pouco objetivos.",
-    solution: "Plataforma de recrutamento com IA que analisa currículos e vagas para gerar automaticamente um índice de compatibilidade entre candidatos e oportunidades.",
-    metrics: "Áreas dedicadas para recrutador e candidato, chat em tempo real e ranking de candidatos por compatibilidade.",
-    tech: ["Python 3.12", "FastAPI", "React", "SQLAlchemy", "Scikit-Learn", "JWT"],
-    link: "https://github.com/adanwilliamdev/sva-platform",
-    demo: null,
-    featured: false,
-    architecture: "React → FastAPI → SQLAlchemy → IA (Scikit-Learn / TF-IDF)",
+    title: "Real Estate Monitor",
+    description: "Plataforma de inteligência de mercado imobiliário: previsão de preços com Random Forest, clusterização, análise de investimento (ROI, yield) e dashboard interativo.",
+    tech: ["Python", "FastAPI", "Scikit-learn", "Streamlit", "Docker"],
+    link: "https://github.com/adanwilliamdev/real-estate-monitor",
+    note: "Explorando Python aplicado a dados",
   },
 ];
 ---
-<section id="projects" class="py-28 px-4 max-w-6xl mx-auto">
-  <div class="mb-16">
+<section id="projects" class="py-24 px-5 max-w-4xl mx-auto">
+  <div class="mb-12">
     <span class="eyebrow">Portfólio</span>
-    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
-      Projetos em destaque
+    <h2 class="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-[var(--color-ink)] mt-3">
+      Projetos
     </h2>
-    <p class="text-[var(--color-ink-dim)] mt-3">Soluções que resolvem problemas reais, do backend ao monitoramento.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="space-y-4">
     {projects.map((project) => (
-      <div class="panel panel-hover flex flex-col overflow-hidden">
-        <div class="p-7 flex flex-col flex-1">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-2xl font-[family-name:var(--font-display)] font-semibold text-[var(--color-ink)] flex items-center gap-2.5">
-              <span>{project.icon}</span>
-              {project.title}
-            </h3>
-            {project.featured && (
-              <span class="tag !text-[var(--color-signal)] !border-[var(--color-signal-dim)] shrink-0">destaque</span>
-            )}
-          </div>
-
-          <p class="text-sm text-[var(--color-ink-dim)] mt-4 leading-relaxed">{project.solution}</p>
-
-          <div class="mt-5 pl-4 border-l-2 border-[var(--color-line)] space-y-3">
-            <div>
-              <span class="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--color-ink-faint)]">Problema</span>
-              <p class="text-sm text-[var(--color-ink-dim)] mt-1">{project.problem}</p>
-            </div>
-            <div>
-              <span class="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--color-online)]">Impacto</span>
-              <p class="text-sm text-[var(--color-ink-dim)] mt-1">{project.metrics}</p>
-            </div>
-          </div>
-
-          <p class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal-soft)] mt-5">
-            {project.architecture}
-          </p>
-
-          <div class="flex flex-wrap gap-2 mt-5">
-            {project.tech.slice(0, 5).map((t) => (
-              <span class="tag">{t}</span>
-            ))}
-            {project.tech.length > 5 && (
-              <span class="tag" title={project.tech.slice(5).join(", ")}>
-                +{project.tech.length - 5}
-              </span>
-            )}
-          </div>
-
-          <div class="mt-6 pt-5 border-t border-[var(--color-line)] flex flex-wrap gap-4">
-            <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim)] hover:text-[var(--color-signal)] transition-colors duration-200">
-              Ver no GitHub
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-            {project.demo && (
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-[var(--color-online)] hover:opacity-80 transition-opacity duration-200">
-                Ver demo →
-              </a>
-            )}
-          </div>
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="panel panel-hover block p-6 md:p-7 group"
+      >
+        <div class="flex items-start justify-between gap-4">
+          <h3 class="text-xl font-[family-name:var(--font-display)] font-semibold text-[var(--color-ink)]">
+            {project.title}
+          </h3>
+          <svg class="w-4 h-4 text-[var(--color-ink-faint)] shrink-0 mt-1.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7m10 0v10"/>
+          </svg>
         </div>
-      </div>
+
+        <p class="text-sm text-[var(--color-ink-dim)] mt-3 leading-relaxed max-w-2xl">
+          {project.description}
+        </p>
+
+        {project.note && (
+          <p class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-accent-soft)] mt-3">
+            {project.note}
+          </p>
+        )}
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          {project.tech.map((t) => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </a>
     ))}
   </div>
 
-  <div class="text-center mt-14">
-    <a href="https://github.com/adanwilliamdev" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center gap-2 px-8 py-4 rounded-xl font-medium">
+  <div class="text-center mt-10">
+    <a href="https://github.com/adanwilliamdev" target="_blank" rel="noopener noreferrer" class="link-accent font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider inline-flex items-center gap-2">
       Ver todos os repositórios →
     </a>
   </div>

@@ -1,41 +1,37 @@
 ---
-const techs = [
-  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
-  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-  { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
-  { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
-  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+const groups = [
+  { label: "Backend", items: ["Java", "Spring Boot", "Spring Security", "Python", "FastAPI"] },
+  { label: "Frontend", items: ["React", "TypeScript"] },
+  { label: "Dados", items: ["PostgreSQL", "Redis"] },
+  { label: "Infra", items: ["Docker", "Git", "Linux"] },
 ];
 ---
-<section id="tech" class="py-28 px-4 bg-[var(--color-surface)]/30 border-y border-[var(--color-line)]">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
+<section id="stack" class="py-24 px-5 border-y border-[var(--color-line-soft)]">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-12">
       <span class="eyebrow">Tecnologias</span>
-      <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
-        Tech stack
+      <h2 class="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-[var(--color-ink)] mt-3">
+        Stack
       </h2>
-      <p class="text-[var(--color-ink-dim)] mt-3">Ferramentas que domino no dia a dia.</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-      {techs.map((tech) => (
-        <div class="panel panel-hover p-5 flex flex-col items-center gap-3 text-center">
-          <img
-            src={tech.icon}
-            alt={tech.name}
-            class="w-10 h-10 object-contain opacity-80"
-            loading="lazy"
-          />
-          <span class="text-sm font-[family-name:var(--font-mono)] text-[var(--color-ink-dim)]">
-            {tech.name}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {groups.map((group) => (
+        <div>
+          <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-ink-faint)] uppercase tracking-wider">
+            {group.label}
           </span>
+          <ul class="mt-3 space-y-2">
+            {group.items.map((item) => (
+              <li class="text-sm text-[var(--color-ink-dim)]">{item}</li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
+
+    <p class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-ink-faint)] mt-12">
+      Estudando: Kubernetes, AWS, arquitetura de microsserviços, observabilidade moderna.
+    </p>
   </div>
 </section>

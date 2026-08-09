@@ -1,39 +1,38 @@
 ---
-const points = [
-  {
-    label: "01 · Infraestrutura",
-    text: "Comecei na infraestrutura e redes, como Técnico de Suporte e depois Analista de NOC. Foram 5+ anos garantindo a disponibilidade de serviços críticos para mais de 12 mil assinantes em um ambiente ISP.",
-  },
-  {
-    label: "02 · Full Stack",
-    text: "Hoje atuo como Analista de TI e Desenvolvedor Full Stack, unindo essa vivência de infraestrutura ao desenvolvimento — entendendo como o código se comporta desde a arquitetura até o monitoramento em produção.",
-  },
-  {
-    label: "03 · Engenharia",
-    text: "Construo sistemas robustos, escaláveis e observáveis, aplicando boas práticas de engenharia de software e trazendo a bagagem de infraestrutura para criar soluções que funcionam no mundo real.",
-  },
+const stats = [
+  { value: "5+", label: "anos em infraestrutura de TI" },
+  { value: "12k+", label: "clientes monitorados (ambiente ISP)" },
+  { value: "N2/N3", label: "resolução de incidentes críticos" },
 ];
 ---
-<section id="about" class="py-28 px-4 max-w-5xl mx-auto">
-  <div class="mb-16">
-    <span class="eyebrow">Sobre mim</span>
-    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
-      Da sala de racks<br class="hidden md:block" /> ao código em produção
+<section id="about" class="py-24 px-5 max-w-4xl mx-auto">
+  <div class="mb-12">
+    <span class="eyebrow">Trajetória</span>
+    <h2 class="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-[var(--color-ink)] mt-3">
+      Da infraestrutura ao backend
     </h2>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {points.map((point) => (
-      <div class="panel panel-hover p-6">
-        <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal)] tracking-wide">
-          {point.label}
-        </span>
-        <p class="text-[var(--color-ink-dim)] leading-relaxed mt-3">{point.text}</p>
-      </div>
-    ))}
-  </div>
+  <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-16">
+    <div class="space-y-5 text-[var(--color-ink-dim)] leading-relaxed">
+      <p>
+        Comecei minha carreira em <span class="text-[var(--color-ink)]">infraestrutura de TI</span>, atuando como Analista de TI na Conectv desde novembro de 2020, monitorando um ambiente de ISP com mais de 12 mil clientes e resolvendo incidentes críticos em nível N2/N3.
+      </p>
+      <p>
+        Essa vivência com sistemas em produção — disponibilidade, monitoramento, troubleshooting sob pressão — me deu uma base prática que hoje aplico diretamente no desenvolvimento: entender como o código se comporta desde a arquitetura até o ambiente real.
+      </p>
+      <p>
+        Hoje direciono minha carreira para o <span class="text-[var(--color-ink)]">desenvolvimento backend com Java e Spring Boot</span>, construindo sistemas corporativos completos, e curso Análise e Desenvolvimento de Sistemas na UniFatecie.
+      </p>
+    </div>
 
-  <blockquote class="mt-10 border-l-2 border-[var(--color-signal)] pl-6 text-[var(--color-ink)]/90 text-xl md:text-2xl font-[family-name:var(--font-display)] font-medium leading-snug">
-    Transformando experiência em infraestrutura em software robusto, escalável e observável.
-  </blockquote>
+    <div class="flex md:flex-col gap-6 md:gap-8 md:border-l md:border-[var(--color-line)] md:pl-10 flex-wrap">
+      {stats.map((stat) => (
+        <div>
+          <div class="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-ink)]">{stat.value}</div>
+          <div class="text-xs text-[var(--color-ink-faint)] mt-1 max-w-[140px]">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
 </section>

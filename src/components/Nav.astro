@@ -1,25 +1,21 @@
 ---
 const links = [
-  { href: "#about", label: "Sobre" },
-  { href: "#experience", label: "Experiência" },
-  { href: "#tech", label: "Stack" },
+  { href: "#about", label: "Trajetória" },
   { href: "#projects", label: "Projetos" },
+  { href: "#stack", label: "Stack" },
 ];
 ---
-<header class="fixed top-0 inset-x-0 z-50">
-  <nav
-    class="mx-auto max-w-6xl mt-4 px-5 py-3 rounded-2xl border border-[var(--color-line)] bg-[color-mix(in_oklab,var(--color-bg)_78%,transparent)] backdrop-blur-md flex items-center justify-between"
-  >
-    <a href="#top" class="font-[family-name:var(--font-mono)] text-sm text-[var(--color-ink)] tracking-tight flex items-center gap-2">
-      <span class="live-dot"></span>
-      adan<span class="text-[var(--color-signal)]">.</span>william
+<header class="fixed top-0 inset-x-0 z-50 border-b border-[var(--color-line-soft)] bg-[color-mix(in_oklab,var(--color-bg)_88%,transparent)] backdrop-blur-sm">
+  <nav class="mx-auto max-w-5xl px-5 py-4 flex items-center justify-between">
+    <a href="#top" class="font-[family-name:var(--font-mono)] text-sm text-[var(--color-ink)] tracking-tight">
+      adan<span class="text-[var(--color-accent)]">.</span>william
     </a>
 
     <div class="hidden md:flex items-center gap-8">
       {links.map((link) => (
         <a
           href={link.href}
-          class="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider text-[var(--color-ink-dim)] hover:text-[var(--color-signal)] transition-colors duration-200"
+          class="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider link-accent"
         >
           {link.label}
         </a>
@@ -28,7 +24,7 @@ const links = [
 
     <a
       href="mailto:adan.william.dev@gmail.com"
-      class="btn-ghost px-4 py-2 rounded-lg text-xs font-[family-name:var(--font-mono)] font-medium"
+      class="btn-ghost px-4 py-2 rounded-md text-xs font-[family-name:var(--font-mono)] font-medium"
     >
       Contato
     </a>
