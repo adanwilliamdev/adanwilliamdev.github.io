@@ -140,7 +140,7 @@ Website: https://adanwilliamdev.github.io/
 📬 Contato
 
 LinkedIn:
-www.linkedin.com/in/-awos
+www.linkedin.com/in/awosantos
 
 GitHub:
 github.com/AdanWilliamDev
