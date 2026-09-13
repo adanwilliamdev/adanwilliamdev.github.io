@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Base surfaces — graphite, not pure black */
-  --color-bg: #0a0b0d;
-  --color-surface: #121419;
-  --color-surface-2: #191c22;
-  --color-line: #2a2d34;
+  /* Base surfaces — near-black with a warm, ink-and-parchment undertone */
+  --color-bg: #0d0b0f;
+  --color-surface: #17131a;
+  --color-surface-2: #1f1a24;
+  --color-line: #332c3a;
 
-  /* Ink */
-  --color-ink: #f3f1ea;
-  --color-ink-dim: #a7a9b1;
-  --color-ink-faint: #6b6e77;
+  /* Ink — warm parchment tones instead of cold white/grey */
+  --color-ink: #f0e6d2;
+  --color-ink-dim: #ab9d8a;
+  --color-ink-faint: #6f6459;
 
-  /* Signal — cool blue, the color of a status light on a monitoring rack */
-  --color-signal: #5b8dee;
-  --color-signal-dim: #2f4a7a;
-  --color-signal-soft: #9db8f5;
+  /* Signal — antique gold, like gilt lettering on an old book spine */
+  --color-signal: #c9a227;
+  --color-signal-dim: #5c4620;
+  --color-signal-soft: #e6c977;
 
   /* Secondary status accents, used sparingly */
-  --color-online: #5ec49a;
-  --color-alert: #d9704f;
+  --color-online: #4f7a5c;
+  --color-alert: #a8412d;
 
-  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-display: "Cormorant Garamond", "Space Grotesk", "Inter", serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
@@ -40,7 +40,7 @@
 
   ::selection {
     background: var(--color-signal);
-    color: #0a0b0d;
+    color: #0d0b0f;
   }
 
   ::-webkit-scrollbar {
@@ -66,8 +66,8 @@
 @layer components {
   .grid-field {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      linear-gradient(to right, rgba(240, 230, 210, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(240, 230, 210, 0.035) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -88,7 +88,7 @@
     height: 6px;
     border-radius: 999px;
     background: var(--color-signal);
-    box-shadow: 0 0 0 3px rgba(227, 165, 72, 0.18);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.18);
   }
 
   .panel {
@@ -103,20 +103,20 @@
   .panel-hover:hover {
     border-color: color-mix(in oklab, var(--color-signal) 45%, var(--color-line));
     transform: translateY(-3px);
-    box-shadow: 0 24px 48px -24px rgba(227, 165, 72, 0.18);
+    box-shadow: 0 24px 48px -24px rgba(201, 162, 39, 0.18);
   }
 
   .btn-signal {
     background: var(--color-signal);
-    color: #0a0b0d;
+    color: #0d0b0f;
     font-weight: 600;
     transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 12px 30px -12px rgba(227, 165, 72, 0.55);
+    box-shadow: 0 12px 30px -12px rgba(201, 162, 39, 0.55);
   }
   .btn-signal:hover {
     background: var(--color-signal-soft);
     transform: translateY(-2px);
-    box-shadow: 0 16px 36px -12px rgba(227, 165, 72, 0.65);
+    box-shadow: 0 16px 36px -12px rgba(201, 162, 39, 0.65);
   }
 
   .btn-ghost {
