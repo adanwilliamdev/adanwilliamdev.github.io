@@ -1,6 +1,30 @@
 ---
 const projects = [
   {
+    title: "OrbNOC",
+    icon: "🛰️",
+    problem: "Provedores de internet e equipes de NOC precisam de uma visão centralizada e em tempo real da saúde da infraestrutura, hoje fragmentada entre várias ferramentas de monitoramento.",
+    solution: "Plataforma de Network Operations Center com monitoramento de disponibilidade, latência e portas TCP, alertas automáticos via Telegram, topologia de rede interativa e wallboard em modo TV.",
+    metrics: "Atualizações em tempo real via WebSocket, histórico de incidentes e ferramentas de diagnóstico integradas (ping avançado, traceroute, DNS lookup, scanner de portas).",
+    tech: ["Next.js 14", "React", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Socket.IO"],
+    link: "https://github.com/adanwilliamdev/OrbNOC",
+    demo: null,
+    featured: true,
+    architecture: "Next.js → Socket.IO / REST → Node.js → PostgreSQL",
+  },
+  {
+    title: "AutoCare",
+    icon: "🚗",
+    problem: "Oficinas mecânicas costumam operar com processos manuais e planilhas para clientes, veículos, orçamentos e estoque de peças, dificultando controle e rastreabilidade.",
+    solution: "ERP full stack para oficinas mecânicas cobrindo todo o fluxo — diagnóstico, orçamento, ordem de serviço e estoque —, com controle de acesso por perfil (admin, gerente, recepção, mecânico).",
+    metrics: "Máquina de estados para o ciclo da ordem de serviço, operações de estoque em transações atômicas e geração de relatórios em PDF.",
+    tech: ["Java 21", "Spring Boot 3.2", "Spring Security", "JWT", "PostgreSQL", "Flyway", "React 18", "TypeScript"],
+    link: "https://github.com/adanwilliamdev/autocare",
+    demo: null,
+    featured: true,
+    architecture: "React/TS → Spring Boot → Spring Security → PostgreSQL",
+  },
+  {
     title: "MedFlow",
     icon: "🩺",
     problem: "Clínicas médicas dependem de planilhas e sistemas fragmentados para gerenciar pacientes, agenda e prontuários, o que gera retrabalho e falhas de comunicação.",
