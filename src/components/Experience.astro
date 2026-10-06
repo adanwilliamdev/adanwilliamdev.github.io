@@ -1,7 +1,7 @@
 ---
 const roles = [
   {
-    period: "Novembro 2020 — Agosto 2026",
+    period: "Nov 2020 — Ago 2026",
     title: "Analista de TI",
     org: "Conectv · Pirapora, MG",
     items: [
@@ -13,7 +13,7 @@ const roles = [
     ],
   },
   {
-    period: "ago. 2025 — abr. 2027",
+    period: "Ago 2025 — Abr 2027",
     title: "Análise e Desenvolvimento de Sistemas",
     org: "Centro Universitário UniFatecie",
     items: [
@@ -25,29 +25,29 @@ const roles = [
 ];
 ---
 <section id="experience" class="py-28 px-4 max-w-6xl mx-auto">
-  <div class="mb-16">
+  <div class="mb-14" data-reveal>
     <span class="eyebrow">Experiência</span>
-    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
-      Trajetória profissional
-    </h2>
-    <p class="text-[var(--color-ink-dim)] mt-3">5+ anos em infraestrutura crítica de ISP, hoje somados a ~1 ano dedicado ao desenvolvimento de software.</p>
+    <h2 class="text-4xl md:text-5xl font-semibold mt-4">Trajetória profissional</h2>
+    <p class="text-ink-dim mt-3 max-w-2xl">5+ anos em infraestrutura crítica de ISP, hoje somados a cerca de 1 ano dedicado ao desenvolvimento de software.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {roles.map((role) => (
-      <div class="panel panel-hover p-7">
-        <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal)]">{role.period}</span>
-        <h3 class="text-2xl font-[family-name:var(--font-display)] font-semibold text-[var(--color-ink)] mt-2">{role.title}</h3>
-        <p class="text-[var(--color-ink-dim)] font-medium">{role.org}</p>
-        <ul class="mt-5 space-y-2.5">
-          {role.items.map((item) => (
-            <li class="flex items-start gap-2.5 text-sm text-[var(--color-ink-dim)]">
-              <span class="text-[var(--color-signal)] mt-0.5 font-[family-name:var(--font-mono)]">▸</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+  <ol class="relative border-l border-line ml-2 space-y-8">
+    {roles.map((role, i) => (
+      <li class="pl-8 relative" data-reveal style={`--d:${i * 100}ms`}>
+        <span class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-signal ring-4 ring-bg"></span>
+        <div class="panel panel-hover p-7">
+          <span class="font-mono text-xs text-signal">{role.period}</span>
+          <h3 class="text-2xl font-semibold mt-2">{role.title}</h3>
+          <p class="text-ink-dim">{role.org}</p>
+          <ul class="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+            {role.items.map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-ink-dim">
+                <span class="text-signal font-mono mt-px">→</span><span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </li>
     ))}
-  </div>
+  </ol>
 </section>

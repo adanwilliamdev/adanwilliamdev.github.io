@@ -14,8 +14,8 @@ const points = [
   },
 ];
 ---
-<section id="about" class="py-28 px-4 max-w-5xl mx-auto">
-  <div class="mb-16">
+<section id="about" class="py-28 px-4 max-w-6xl mx-auto">
+  <div class="mb-14" data-reveal>
     <span class="eyebrow">Sobre mim</span>
     <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
       Da sala de racks<br class="hidden md:block" /> ao código em produção
@@ -23,8 +23,8 @@ const points = [
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {points.map((point) => (
-      <div class="panel panel-hover p-6">
+    {points.map((point, i) => (
+      <div class="panel panel-hover p-6" data-reveal style={`--d:${i * 90}ms`}>
         <span class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal)] tracking-wide">
           {point.label}
         </span>
@@ -33,7 +33,7 @@ const points = [
     ))}
   </div>
 
-  <blockquote class="mt-10 border-l-2 border-[var(--color-signal)] pl-6 text-[var(--color-ink)]/90 text-xl md:text-2xl font-[family-name:var(--font-display)] font-medium leading-snug">
+  <blockquote data-reveal class="mt-10 border-l-2 border-[var(--color-signal)] pl-6 text-[var(--color-ink)]/90 text-xl md:text-2xl font-[family-name:var(--font-display)] font-medium leading-snug">
     Transformando experiência em infraestrutura em software robusto, escalável e observável.
   </blockquote>
 </section>

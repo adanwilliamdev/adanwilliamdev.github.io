@@ -1,201 +1,64 @@
 ---
-const projects = [
-  {
-    title: "OrbNOC",
-    icon: "🛰️",
-    problem: "Provedores de internet e equipes de NOC precisam de uma visão centralizada e em tempo real da saúde da infraestrutura, hoje fragmentada entre várias ferramentas de monitoramento.",
-    solution: "Plataforma enterprise de NOC para monitoramento de infraestrutura e redes: disponibilidade de dispositivos, latência, jitter, perda de pacotes, alertas, SLA, diagnóstico de rede (ping, traceroute, DNS), mapa de infraestrutura e wallboard para TV.",
-    metrics: "Comunicação em tempo real via Socket.IO, com eleição de líder de monitoramento coordenada pelo Redis e histórico de incidentes.",
-    tech: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "TanStack Query", "Python", "FastAPI", "SQLAlchemy 2", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/OrbNOC",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → Socket.IO / REST → FastAPI → PostgreSQL / Redis",
-  },
-  {
-    title: "AutoCare",
-    icon: "🚗",
-    problem: "Oficinas mecânicas costumam operar com processos manuais e planilhas para clientes, veículos, orçamentos e estoque de peças, dificultando controle e rastreabilidade.",
-    solution: "ERP full stack para oficinas mecânicas cobrindo clientes, veículos, mecânicos, orçamentos e ordens de serviço com máquina de estados, com controle de acesso por perfil (admin, gerente, recepção, mecânico).",
-    metrics: "Controle transacional de estoque com controle de concorrência por versão (optimistic locking) e autenticação JWT.",
-    tech: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "TanStack Query", "Python", "FastAPI", "SQLAlchemy 2", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/autocare",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI → SQLAlchemy → PostgreSQL / Redis",
-  },
-  {
-    title: "Uptime SaaS",
-    icon: "📡",
-    problem: "Times de produto precisam saber quando uma aplicação ou API sai do ar antes que o usuário reclame, sem depender de verificação manual.",
-    solution: "Plataforma de monitoramento de disponibilidade que permite cadastrar endpoints HTTP e acompanhar status, latência, uptime e incidentes em tempo real.",
-    metrics: "Verificação assíncrona via fila Redis/Taskiq a cada 10s, abertura e encerramento automático de incidentes e atualizações via WebSocket com Redis Pub/Sub.",
-    tech: ["Python 3.12", "FastAPI", "SQLAlchemy", "Redis", "Taskiq", "Next.js 16", "TypeScript"],
-    link: "https://github.com/adanwilliamdev/uptime-saas",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI → PostgreSQL / Redis (Taskiq)",
-  },
-  {
-    title: "InfraMonitor",
-    icon: "🖥️",
-    problem: "Equipes de TI precisam acompanhar a saúde de servidores e serviços internos sem depender de planilhas ou verificação manual.",
-    solution: "Dashboard de monitoramento de infraestrutura de TI, com autenticação e alertas de uso de CPU, memória e disco em tempo real.",
-    metrics: "API assíncrona com FastAPI e SQLAlchemy, com Redis apoiando cache e atualizações do dashboard.",
-    tech: ["Next.js", "TypeScript", "Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/inframonitor",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI → SQLAlchemy → PostgreSQL / Redis",
-  },
-  {
-    title: "Burger & Pizza House ERP",
-    icon: "🍕",
-    problem: "Pizzarias e hamburguerias costumam controlar pedidos, ingredientes e caixa manualmente, dificultando o controle de estoque e o desempenho do negócio.",
-    solution: "Sistema de gestão para pizzarias e hamburguerias, com catálogo de produtos e receitas por ingrediente, baixa automática e validação de estoque, e ciclo de vida completo de pedidos.",
-    metrics: "Dashboard com faturamento, produtos mais vendidos e alerta de estoque baixo, com autenticação JWT.",
-    tech: ["Next.js 16", "TypeScript", "Tailwind CSS", "TanStack Query", "Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/Burger-Pizza-House",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI → SQLAlchemy → PostgreSQL / Redis",
-  },
-  {
-    title: "Minha Biblioteca",
-    icon: "📚",
-    problem: "Organizar e acompanhar o progresso de filmes e séries assistidos manualmente é trabalhoso e pouco visual.",
-    solution: "Gerenciador full stack de filmes e séries, com importação automática de dados via TMDB, controle de temporadas/episódios e dashboard de estatísticas.",
-    metrics: "Autenticação JWT, controle de progresso automático e cache/atualizações via Redis.",
-    tech: ["Next.js", "TypeScript", "Python", "FastAPI", "SQLAlchemy", "JWT", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/biblioteca-fullstack",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI → SQLAlchemy → PostgreSQL / Redis",
-  },
-  {
-    title: "SVA — Sua Vaga Aqui",
-    icon: "🧠",
-    problem: "Processos seletivos tradicionais dependem de triagem manual de currículos, dificultando comparar candidatos com objetividade.",
-    solution: "Plataforma de recrutamento que conecta candidatos e recrutadores, com score de compatibilidade entre currículo e vaga, agendamento de entrevistas e analytics para recrutadores.",
-    metrics: "Chat em tempo real via WebSocket nativo + Redis Pub/Sub (suporte a múltiplas instâncias) e validação de formulários com React Hook Form + Zod.",
-    tech: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "TanStack Query", "Python", "FastAPI", "SQLAlchemy 2", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/sva-platform",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI (WebSocket) → SQLAlchemy → PostgreSQL / Redis",
-  },
-  {
-    title: "Ticketing System",
-    icon: "🎟️",
-    problem: "Sistemas de venda de ingressos (estilo Ticketmaster/Sympla) precisam lidar com muitos usuários disputando o mesmo assento sem gerar overbooking nem pagamento duplicado.",
-    solution: "Sistema de reserva e venda de ingressos voltado para concorrência e consistência transacional, com expiração automática de reservas.",
-    metrics: "Locks distribuídos via Redis, SELECT ... FOR UPDATE no banco e idempotência de pagamentos para evitar cobrança duplicada.",
-    tech: ["Next.js 16", "TypeScript", "Tailwind CSS", "TanStack Query", "Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Redis"],
-    link: "https://github.com/adanwilliamdev/ticketing-system",
-    demo: null,
-    featured: true,
-    architecture: "Next.js → FastAPI → SQLAlchemy (locks) → PostgreSQL / Redis",
-  },
-  {
-    title: "Real Estate Monitor",
-    icon: "🏠",
-    problem: "Investidores imobiliários têm dificuldade em cruzar dados de preço, região e histórico para identificar boas oportunidades de investimento.",
-    solution: "Plataforma de inteligência de mercado imobiliário com previsão de preços via Machine Learning, análise de investimento (ROI, yield, payback) e dashboard interativo.",
-    metrics: "Modelo Random Forest para previsão de preços, clusterização K-Means por região e ranking automático de oportunidades.",
-    tech: ["Python 3.11", "FastAPI", "Scikit-learn", "Pandas", "Streamlit", "Docker", "Pytest"],
-    link: "https://github.com/adanwilliamdev/real-estate-monitor",
-    demo: null,
-    featured: true,
-    architecture: "Streamlit → FastAPI → Scikit-learn → SQLite/PostgreSQL",
-  },
-  {
-    title: "Scalable Web Scraper",
-    icon: "🕷️",
-    problem: "Coletar dados de várias páginas web de forma confiável exige lidar com bloqueios, limites de taxa e falhas de rede em escala.",
-    solution: "Web scraper escalável com processamento assíncrono, fila de tarefas via Redis e workers concorrentes, com rotação de proxies/User-Agent e cache de respostas.",
-    metrics: "Retry com backoff exponencial, rate limiting por domínio, métricas via Prometheus/Grafana e suporte a execução distribuída com Kubernetes.",
-    tech: ["Python 3.11", "Redis", "PostgreSQL", "MongoDB", "Docker", "Kubernetes", "Prometheus", "Pytest"],
-    link: "https://github.com/adanwilliamdev/ScalableScraper",
-    demo: null,
-    featured: true,
-    architecture: "Scheduler → Redis (fila) → Workers → Storage",
-  },
-  {
-    title: "Sistema de Gestão de Estoque Inteligente",
-    icon: "📦",
-    problem: "Empresas perdem vendas e ficam sem visibilidade quando produtos atingem o estoque mínimo sem alertas automáticos.",
-    solution: "API REST para controle de estoque, com histórico de movimentações, relatórios e alertas automáticos de estoque mínimo publicados via RabbitMQ.",
-    metrics: "Monitoramento periódico de estoque mínimo, reconexão automática caso o RabbitMQ fique indisponível e testes unitários (xUnit + Moq) cobrindo as regras de negócio.",
-    tech: [".NET 7", "ASP.NET Core", "Entity Framework Core", "SQL Server", "RabbitMQ", "Swagger", "xUnit"],
-    link: "https://github.com/adanwilliamdev/Sistema-de-Gest-o-de-Estoque-Inteligente",
-    demo: null,
-    featured: true,
-    architecture: "ASP.NET Core → EF Core → SQL Server / RabbitMQ",
-  },
-];
+import { projects } from "../data/projects";
+
+const featuredTitles = ["OrbNOC", "Uptime SaaS", "Ticketing System", "SVA — Sua Vaga Aqui"];
+const featured = featuredTitles.map((t) => projects.find((p) => p.title === t)!).filter(Boolean);
+const others = projects.filter((p) => !featuredTitles.includes(p.title));
+const arrow = "M7 17L17 7m0 0H8m9 0v9";
 ---
 <section id="projects" class="py-28 px-4 max-w-6xl mx-auto">
-  <div class="mb-16">
+  <div class="mb-14" data-reveal>
     <span class="eyebrow">Portfólio</span>
-    <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
-      Projetos em destaque
-    </h2>
-    <p class="text-[var(--color-ink-dim)] mt-3">Soluções que resolvem problemas reais, do backend à análise de dados.</p>
+    <h2 class="text-4xl md:text-5xl font-semibold mt-4">Projetos</h2>
+    <p class="text-ink-dim mt-3 max-w-2xl">Soluções que resolvem problemas reais, do backend à análise de dados.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {projects.map((project) => (
-      <div class="panel panel-hover flex flex-col overflow-hidden">
-        <div class="p-7 flex flex-col flex-1">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-2xl font-[family-name:var(--font-display)] font-semibold text-[var(--color-ink)] flex items-center gap-2.5">
-              <span>{project.icon}</span>
-              {project.title}
-            </h3>
+  <div class="grid md:grid-cols-2 gap-5">
+    {featured.map((p, i) => (
+      <a href={p.link} target="_blank" rel="noopener noreferrer" class="panel panel-hover p-7 flex flex-col group" data-reveal style={`--d:${(i % 2) * 100}ms`}>
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="text-2xl font-semibold flex items-center gap-3"><span aria-hidden="true">{p.icon}</span>{p.title}</h3>
+          <svg class="w-5 h-5 text-ink-faint group-hover:text-signal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={arrow}/></svg>
+        </div>
+        <p class="text-sm text-ink-dim mt-4 leading-relaxed">{p.solution}</p>
+
+        <div class="mt-5 pl-4 border-l-2 border-line space-y-3">
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-ink-faint">Problema</span>
+            <p class="text-sm text-ink-dim mt-1">{p.problem}</p>
           </div>
-
-          <p class="text-sm text-[var(--color-ink-dim)] mt-4 leading-relaxed">{project.solution}</p>
-
-          <div class="mt-5 pl-4 border-l-2 border-[var(--color-line)] space-y-3">
-            <div>
-              <span class="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--color-ink-faint)]">Problema</span>
-              <p class="text-sm text-[var(--color-ink-dim)] mt-1">{project.problem}</p>
-            </div>
-            <div>
-              <span class="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--color-online)]">Impacto</span>
-              <p class="text-sm text-[var(--color-ink-dim)] mt-1">{project.metrics}</p>
-            </div>
-          </div>
-
-          <p class="font-[family-name:var(--font-mono)] text-xs text-[var(--color-signal-soft)] mt-5">
-            {project.architecture}
-          </p>
-
-          <div class="flex flex-wrap gap-2 mt-5">
-            {project.tech.slice(0, 5).map((t) => (
-              <span class="tag">{t}</span>
-            ))}
-            {project.tech.length > 5 && (
-              <span class="tag" title={project.tech.slice(5).join(", ")}>
-                +{project.tech.length - 5}
-              </span>
-            )}
-          </div>
-
-          <div class="mt-6 pt-5 border-t border-[var(--color-line)] flex flex-wrap gap-4">
-            <a href={project.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-[var(--color-ink-dim)] hover:text-[var(--color-signal)] transition-colors duration-200">
-              Ver no GitHub
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
+          <div>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-signal">Impacto</span>
+            <p class="text-sm text-ink-dim mt-1">{p.metrics}</p>
           </div>
         </div>
-      </div>
+
+        <p class="font-mono text-xs text-signal-soft mt-5">{p.architecture}</p>
+        <div class="flex flex-wrap gap-2 mt-auto pt-5">
+          {p.tech.slice(0, 6).map((t) => <span class="tag">{t}</span>)}
+          {p.tech.length > 6 && <span class="tag" title={p.tech.slice(6).join(", ")}>+{p.tech.length - 6}</span>}
+        </div>
+      </a>
     ))}
   </div>
 
-  <div class="text-center mt-14">
-    <a href="https://github.com/adanwilliamdev" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center gap-2 px-8 py-4 rounded-xl font-medium">
-      Ver todos os repositórios →
-    </a>
+  <h3 class="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint mt-16 mb-5" data-reveal>Mais projetos</h3>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {others.map((p, i) => (
+      <a href={p.link} target="_blank" rel="noopener noreferrer" class="panel panel-hover p-5 flex flex-col group" data-reveal style={`--d:${(i % 3) * 80}ms`}>
+        <div class="flex items-start justify-between gap-3">
+          <h4 class="text-lg font-semibold flex items-center gap-2.5 leading-snug"><span aria-hidden="true">{p.icon}</span>{p.title}</h4>
+          <svg class="w-4 h-4 mt-1 shrink-0 text-ink-faint group-hover:text-signal transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={arrow}/></svg>
+        </div>
+        <p class="text-sm text-ink-dim mt-3 leading-relaxed line-clamp-3">{p.solution}</p>
+        <div class="flex flex-wrap gap-1.5 mt-auto pt-4">
+          {p.tech.slice(0, 3).map((t) => <span class="tag !text-[0.65rem]">{t}</span>)}
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="text-center mt-14" data-reveal>
+    <a href="https://github.com/adanwilliamdev" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center gap-2 px-8 py-4 rounded-xl font-medium">Ver todos os repositórios →</a>
   </div>
 </section>

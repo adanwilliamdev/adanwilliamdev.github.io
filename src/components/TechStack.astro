@@ -1,39 +1,26 @@
 ---
-const techs = [
-  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-  { name: "FastAPI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
-  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-  { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
-  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-  { name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
-  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+const groups = [
+  { title: "Backend", items: ["Python", "FastAPI", "Pydantic", "SQLAlchemy", "Alembic", "Socket.IO", "WebSocket", "JWT", "Node.js", "Java / Spring Boot", ".NET"] },
+  { title: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "shadcn/ui", "Zod"] },
+  { title: "Dados & mensageria", items: ["PostgreSQL", "Redis", "RabbitMQ", "SQL Server", "MongoDB"] },
+  { title: "Infra & observabilidade", items: ["Docker", "Kubernetes", "Linux", "Zabbix", "PRTG", "Prometheus", "Grafana", "Git", "GitHub Actions"] },
 ];
 ---
-<section id="tech" class="py-28 px-4 bg-[var(--color-surface)]/30 border-y border-[var(--color-line)]">
+<section id="tech" class="py-28 px-4 border-y border-line bg-surface/40">
   <div class="max-w-6xl mx-auto">
-    <div class="mb-16">
+    <div class="mb-14" data-reveal>
       <span class="eyebrow">Tecnologias</span>
-      <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
-        Tech stack
-      </h2>
-      <p class="text-[var(--color-ink-dim)] mt-3">Ferramentas que domino no dia a dia.</p>
+      <h2 class="text-4xl md:text-5xl font-semibold mt-4">Tech stack</h2>
+      <p class="text-ink-dim mt-3">Ferramentas que uso no dia a dia, organizadas por camada.</p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-      {techs.map((tech) => (
-        <div class="panel panel-hover p-5 flex flex-col items-center gap-3 text-center">
-          <img
-            src={tech.icon}
-            alt={tech.name}
-            class="w-10 h-10 object-contain opacity-80"
-            loading="lazy"
-          />
-          <span class="text-sm font-[family-name:var(--font-mono)] text-[var(--color-ink-dim)]">
-            {tech.name}
-          </span>
+    <div class="grid md:grid-cols-2 gap-5">
+      {groups.map((g, i) => (
+        <div class="panel panel-hover p-7" data-reveal style={`--d:${i * 80}ms`}>
+          <h3 class="font-mono text-xs uppercase tracking-[0.14em] text-signal">{g.title}</h3>
+          <div class="flex flex-wrap gap-2 mt-5">
+            {g.items.map((t) => <span class="tag !text-[0.8rem] !px-3 !py-1.5">{t}</span>)}
+          </div>
         </div>
       ))}
     </div>

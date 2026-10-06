@@ -2,14 +2,12 @@
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 
-export interface Props {
-  title: string;
-  description?: string;
-}
+export interface Props { title: string; description?: string; }
 const {
   title,
-  description = "Portfólio de Adan William — Analista de TI e Desenvolvedor Full Stack, com base em infraestrutura e observabilidade.",
+  description = "Portfólio de Adan William — Desenvolvedor Backend (Python & TypeScript) com 5+ anos em infraestrutura e observabilidade.",
 } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -18,21 +16,48 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <meta name="theme-color" content="#07090c" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.dataset.theme = t;
+      } catch (e) { document.documentElement.dataset.theme = "dark"; }
+    </script>
   </head>
-  <body class="bg-[var(--color-bg)] text-[var(--color-ink)] antialiased">
+  <body class="bg-bg text-ink antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] btn-signal px-4 py-2 rounded-lg text-sm">Pular para o conteúdo</a>
     <div class="relative overflow-x-hidden">
       <Nav />
-      <slot />
+      <main id="main"><slot /></main>
     </div>
+    <script>
+      // scroll reveal
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+
+      // cursor spotlight on cards
+      document.addEventListener("pointermove", (ev) => {
+        const card = (ev.target as HTMLElement).closest<HTMLElement>(".panel-hover");
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", ev.clientX - r.left + "px");
+        card.style.setProperty("--my", ev.clientY - r.top + "px");
+      });
+    </script>
   </body>
 </html>

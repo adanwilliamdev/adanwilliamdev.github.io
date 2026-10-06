@@ -1,37 +1,43 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const roles = [
-  "Desenvolvedor Backend Java",
-  "Spring Boot & React",
-  "Full Stack Developer",
-  "Ex-Infraestrutura & NOC"
+  "Backend Developer",
+  "Python & FastAPI",
+  "Next.js & TypeScript",
+  "Ex-Infra & NOC",
 ];
 
 export default function Typewriter() {
   const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [reverse, setReverse] = useState(false);
+  const [sub, setSub] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [still, setStill] = useState(false);
 
   useEffect(() => {
-    if (subIndex === roles[index].length + 1 && !reverse) {
-      setReverse(true);
-      return;
-    }
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      setIndex((prev) => (prev + 1) % roles.length);
-      return;
-    }
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, Math.max(reverse ? 50 : 120, reverse ? 50 : 150));
-    return () => clearTimeout(timeout);
-  }, [subIndex, index, reverse]);
+    setStill(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
+  useEffect(() => {
+    if (still) return;
+    const word = roles[index];
+    if (!deleting && sub === word.length) {
+      const t = setTimeout(() => setDeleting(true), 1400);
+      return () => clearTimeout(t);
+    }
+    if (deleting && sub === 0) {
+      setDeleting(false);
+      setIndex((i) => (i + 1) % roles.length);
+      return;
+    }
+    const t = setTimeout(() => setSub((s) => s + (deleting ? -1 : 1)), deleting ? 35 : 80);
+    return () => clearTimeout(t);
+  }, [sub, index, deleting, still]);
+
+  const text = still ? roles[0] : roles[index].slice(0, sub);
   return (
-    <span className="flex items-center gap-1">
-      <span>{roles[index].substring(0, subIndex)}</span>
-      <span className="w-[3px] h-7 bg-[var(--color-signal)] animate-pulse"></span>
+    <span className="inline-flex items-center gap-1" aria-label={roles.join(", ")}>
+      <span aria-hidden="true">{text}</span>
+      <span aria-hidden="true" className="w-[2px] h-[1.1em] bg-signal animate-pulse" />
     </span>
   );
 }

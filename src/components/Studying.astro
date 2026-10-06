@@ -10,8 +10,8 @@ const topics = [
   "OpenTelemetry",
 ];
 ---
-<section id="studying" class="py-28 px-4 max-w-5xl mx-auto">
-  <div class="mb-12 text-center">
+<section id="studying" class="py-28 px-4 max-w-6xl mx-auto">
+  <div class="mb-12 text-center" data-reveal>
     <span class="eyebrow">Aprendizado contínuo</span>
     <h2 class="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[var(--color-ink)] mt-4">
       O que estou estudando
@@ -21,7 +21,7 @@ const topics = [
 
   <div class="flex flex-wrap justify-center gap-3">
     {topics.map((item) => (
-      <span class="tag !text-sm !px-4 !py-2 panel-hover">{item}</span>
+      <span class="tag !text-sm !px-4 !py-2 hover:border-signal hover:text-signal transition-colors" data-reveal>{item}</span>
     ))}
   </div>
 </section>
