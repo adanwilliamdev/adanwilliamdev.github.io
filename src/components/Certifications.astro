@@ -1,0 +1,26 @@
+---
+const certs = [
+  { name: "Python para Análise e Automação de Dados", org: "Accenture", meta: "" },
+  { name: "Banco de Dados: Oracle PL/SQL", org: "Instituto Federal do Rio Grande do Sul", meta: "20h · Ago 2026" },
+  { name: "Java com Inteligência Artificial", org: "Itaú / DIO", meta: "45h · Set 2026" },
+  { name: "Java AI Copilot", org: "CI&T / DIO", meta: "53h · Set 2026" },
+  { name: "AI-900: Fundamentos de IA no Azure", org: "Fundação Bradesco", meta: "16h" },
+];
+---
+<section id="certifications" class="py-28 px-4 max-w-6xl mx-auto">
+  <div class="mb-14" data-reveal>
+    <span class="eyebrow">Formação</span>
+    <h2 class="text-4xl md:text-5xl font-semibold mt-4">Certificações</h2>
+    <p class="text-ink-dim mt-3 max-w-2xl">Graduação em Análise e Desenvolvimento de Sistemas na UniFatecie (2025 – 2027), complementada por cursos práticos. Idiomas: português nativo e inglês intermediário, com leitura técnica.</p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {certs.map((c, i) => (
+      <div class="panel panel-hover p-5 flex flex-col" data-reveal style={`--d:${(i % 3) * 80}ms`}>
+        <h3 class="text-lg font-semibold leading-snug">{c.name}</h3>
+        <p class="text-sm text-ink-dim mt-2">{c.org}</p>
+        {c.meta && <p class="font-mono text-xs text-signal mt-auto pt-4">{c.meta}</p>}
+      </div>
+    ))}
+  </div>
+</section>

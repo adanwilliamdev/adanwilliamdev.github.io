@@ -1,7 +1,7 @@
 ---
 import { projects } from "../data/projects";
 
-const featuredTitles = ["OrbNOC", "Uptime SaaS", "Ticketing System", "SVA — Sua Vaga Aqui"];
+const featuredTitles = ["OrbNOC", "Ticketing System", "SVA — Sua Vaga Aqui", "Mecânica+", "Dashboard Analytics", "ETL de qualidade de dados"];
 const featured = featuredTitles.map((t) => projects.find((p) => p.title === t)!).filter(Boolean);
 const others = projects.filter((p) => !featuredTitles.includes(p.title));
 const arrow = "M7 17L17 7m0 0H8m9 0v9";
@@ -10,7 +10,7 @@ const arrow = "M7 17L17 7m0 0H8m9 0v9";
   <div class="mb-14" data-reveal>
     <span class="eyebrow">Portfólio</span>
     <h2 class="text-4xl md:text-5xl font-semibold mt-4">Projetos</h2>
-    <p class="text-ink-dim mt-3 max-w-2xl">Soluções que resolvem problemas reais, do backend à análise de dados.</p>
+    <p class="text-ink-dim mt-3 max-w-2xl">Projetos completos, publicados no GitHub com Docker, testes automatizados e migrations.</p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-5">
