@@ -1,16 +1,15 @@
 ---
 import { projects } from "../data/projects";
 
-const featuredTitles = ["OrbNOC", "Ticketing System", "SVA — Sua Vaga Aqui", "Mecânica+", "Dashboard Analytics", "ETL de qualidade de dados"];
-const featured = featuredTitles.map((t) => projects.find((p) => p.title === t)!).filter(Boolean);
-const others = projects.filter((p) => !featuredTitles.includes(p.title));
+const featured = projects.filter((p) => p.kind === "main");
+const others = projects.filter((p) => p.kind === "ai");
 const arrow = "M7 17L17 7m0 0H8m9 0v9";
 ---
 <section id="projects" class="py-28 px-4 max-w-6xl mx-auto">
   <div class="mb-14" data-reveal>
     <span class="eyebrow">Portfólio</span>
     <h2 class="text-4xl md:text-5xl font-semibold mt-4">Projetos</h2>
-    <p class="text-ink-dim mt-3 max-w-2xl">Projetos completos, publicados no GitHub com Docker, testes automatizados e migrations.</p>
+    <p class="text-ink-dim mt-3 max-w-2xl">Projetos publicados no GitHub, cada um com README e instruções para rodar. Foco em regras de negócio, segurança e consistência de dados.</p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-5">
@@ -42,7 +41,7 @@ const arrow = "M7 17L17 7m0 0H8m9 0v9";
     ))}
   </div>
 
-  <h3 class="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint mt-16 mb-5" data-reveal>Mais projetos</h3>
+  <h3 class="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint mt-16 mb-5" data-reveal>Experimentos com IA</h3>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {others.map((p, i) => (
       <a href={p.link} target="_blank" rel="noopener noreferrer" class="panel panel-hover p-5 flex flex-col group" data-reveal style={`--d:${(i % 3) * 80}ms`}>
@@ -50,9 +49,9 @@ const arrow = "M7 17L17 7m0 0H8m9 0v9";
           <h4 class="text-lg font-semibold flex items-center gap-2.5 leading-snug"><span aria-hidden="true">{p.icon}</span>{p.title}</h4>
           <svg class="w-4 h-4 mt-1 shrink-0 text-ink-faint group-hover:text-signal transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={arrow}/></svg>
         </div>
-        <p class="text-sm text-ink-dim mt-3 leading-relaxed line-clamp-3">{p.solution}</p>
+        <p class="text-sm text-ink-dim mt-3 leading-relaxed line-clamp-4">{p.solution}</p>
         <div class="flex flex-wrap gap-1.5 mt-auto pt-4">
-          {p.tech.slice(0, 3).map((t) => <span class="tag !text-[0.65rem]">{t}</span>)}
+          {p.tech.slice(0, 4).map((t) => <span class="tag !text-[0.65rem]">{t}</span>)}
         </div>
       </a>
     ))}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 const roles = [
-  "Desenvolvedor Backend Júnior",
-  "Python & FastAPI",
-  "Java & Spring Boot",
+  "Desenvolvedor Java Júnior",
+  "Spring Boot & PostgreSQL",
+  "Full Stack Júnior",
   "Ex-Infra & NOC",
 ];
 

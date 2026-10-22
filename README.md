@@ -1,6 +1,6 @@
 # Portfólio · Adan William
 
-Site pessoal de **Adan William Oliveira Santos**, Desenvolvedor Backend Júnior (Python e Java).
+Site pessoal de **Adan William Oliveira Santos**, Desenvolvedor Java Júnior / Full Stack Júnior (Spring Boot).
 Publicado em <https://adanwilliamdev.github.io/>.
 
 ## Stack do site
