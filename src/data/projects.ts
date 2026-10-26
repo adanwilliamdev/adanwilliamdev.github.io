@@ -49,17 +49,33 @@ export const projects: Project[] = [
     architecture: "Controller → Service → Redisson (lock distribuído) → PostgreSQL (pessimistic locking)",
   },
   {
-    title: "OrbNOC",
-    icon: "🛰️",
-    kind: "main",
-    problem: "Equipes de NOC de provedores de internet precisam de uma visão única e em tempo real da saúde da rede, hoje espalhada entre várias ferramentas.",
-    solution: "Monitoramento de equipamentos de rede em tempo real: latência, jitter, perda de pacotes, alertas, SLA por janelas de 24h, 7d e 30d, diagnóstico (ping, traceroute, DNS), notificações no Telegram, mapa, wallboard e relatórios CSV/XLSX. Nasceu da minha rotina de NOC: a primeira versão foi em Java e depois foi reescrita em Python.",
-    metrics: "Worker Python independente com ICMP e fallback automático para TCP, WebSocket com Redis Pub/Sub, Argon2, JWT em cookie httpOnly, rate limit de login, comandos de diagnóstico sem shell, testes com PostgreSQL e Redis reais e CI.",
-    tech: ["Python", "FastAPI", "SQLAlchemy async", "PostgreSQL", "Redis", "WebSocket", "Next.js", "TypeScript", "Docker"],
-    link: "https://github.com/adanwilliamdev/OrbNOC",
-    demo: null,
-    architecture: "Next.js → WebSocket / REST → FastAPI → PostgreSQL / Redis ← Worker (ICMP/TCP)",
-  },
+{
+  title: "OrbNOC",
+  icon: "🛰️",
+  kind: "main",
+
+  problem: "Equipes de NOC de provedores de internet precisam de uma visão única e em tempo real da saúde da rede, hoje espalhada entre várias ferramentas.",
+
+  solution: "Monitoramento de rede em tempo real: disponibilidade, latência, alertas de queda/recuperação/SLA, diagnóstico (ping, traceroute, DNS e teste de portas), notificações no Telegram, mapa de rede, wallboard para TV de NOC e relatórios de SLA em janelas de 24h, 7d e 30d com exportação em CSV e Excel.",
+
+  metrics: "Serviço Spring Boot único com threads virtuais, monitor em segundo plano com ICMP (ping) e fallback automático para TCP, atualização em tempo real via WebSocket, Argon2 para senhas, JWT em cookie httpOnly + SameSite, proteção CSRF por origem, comandos de diagnóstico sem shell, migrações Flyway e testes unitários com Maven.",
+
+  tech: [
+    "Java 21",
+    "Spring Boot 3.5",
+    "Thymeleaf",
+    "PostgreSQL 16",
+    "Flyway",
+    "WebSocket",
+    "Apache POI",
+    "Docker"
+  ],
+
+  link: "https://github.com/adanwilliamdev/OrbNOC",
+  demo: null,
+
+  architecture: "Navegador ⇄ HTTP/WebSocket ⇄ OrbNOC (Spring Boot: API REST + Thymeleaf + WebSocket + Monitor) → PostgreSQL"
+}
   {
     title: "TaskFlow",
     icon: "🧩",
