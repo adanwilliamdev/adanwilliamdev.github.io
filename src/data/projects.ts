@@ -49,33 +49,17 @@ export const projects: Project[] = [
     architecture: "Controller → Service → Redisson (lock distribuído) → PostgreSQL (pessimistic locking)",
   },
   {
-{
-  title: "OrbNOC",
-  icon: "🛰️",
-  kind: "main",
-
-  problem: "Equipes de NOC de provedores de internet precisam de uma visão única e em tempo real da saúde da rede, hoje espalhada entre várias ferramentas.",
-
-  solution: "Monitoramento de rede em tempo real: disponibilidade, latência, alertas de queda/recuperação/SLA, diagnóstico (ping, traceroute, DNS e teste de portas), notificações no Telegram, mapa de rede, wallboard para TV de NOC e relatórios de SLA em janelas de 24h, 7d e 30d com exportação em CSV e Excel.",
-
-  metrics: "Serviço Spring Boot único com threads virtuais, monitor em segundo plano com ICMP (ping) e fallback automático para TCP, atualização em tempo real via WebSocket, Argon2 para senhas, JWT em cookie httpOnly + SameSite, proteção CSRF por origem, comandos de diagnóstico sem shell, migrações Flyway e testes unitários com Maven.",
-
-  tech: [
-    "Java 21",
-    "Spring Boot 3.5",
-    "Thymeleaf",
-    "PostgreSQL 16",
-    "Flyway",
-    "WebSocket",
-    "Apache POI",
-    "Docker"
-  ],
-
-  link: "https://github.com/adanwilliamdev/OrbNOC",
-  demo: null,
-
-  architecture: "Navegador ⇄ HTTP/WebSocket ⇄ OrbNOC (Spring Boot: API REST + Thymeleaf + WebSocket + Monitor) → PostgreSQL"
-}
+    title: "OrbNOC",
+    icon: "🛰️",
+    kind: "main",
+    problem: "Equipes de NOC de provedores de internet precisam de uma visão única e em tempo real da saúde da rede, hoje espalhada entre várias ferramentas.",
+    solution: "Monitoramento de rede em tempo real: disponibilidade, latência, alertas de queda/recuperação/SLA, diagnóstico (ping, traceroute, DNS e teste de portas), notificações no Telegram, mapa de rede, wallboard para TV de NOC e relatórios de SLA em janelas de 24h, 7d e 30d com exportação em CSV e Excel.",
+    metrics: "Serviço Spring Boot único com threads virtuais, monitor em segundo plano com ICMP (ping) e fallback automático para TCP, atualização em tempo real via WebSocket, Argon2 para senhas, JWT em cookie httpOnly + SameSite, proteção CSRF por origem, comandos de diagnóstico sem shell, migrações Flyway e testes unitários com Maven.",
+    tech: ["Java 21", "Spring Boot 3.5", "Thymeleaf", "PostgreSQL 16", "Flyway", "WebSocket", "Apache POI", "Docker"],
+    link: "https://github.com/adanwilliamdev/OrbNOC",
+    demo: null,
+    architecture: "Navegador ⇄ HTTP/WebSocket ⇄ OrbNOC (Spring Boot: API REST + Thymeleaf + WebSocket + Monitor) → PostgreSQL",
+  },
   {
     title: "TaskFlow",
     icon: "🧩",
