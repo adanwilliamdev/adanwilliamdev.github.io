@@ -2,6 +2,7 @@
 import { projects } from "../data/projects";
 
 const featured = projects.filter((p) => p.kind === "main");
+const more = projects.filter((p) => p.kind === "more");
 const others = projects.filter((p) => p.kind === "ai");
 const arrow = "M7 17L17 7m0 0H8m9 0v9";
 ---
@@ -9,12 +10,13 @@ const arrow = "M7 17L17 7m0 0H8m9 0v9";
   <div class="mb-14" data-reveal>
     <span class="eyebrow">Portfólio</span>
     <h2 class="text-4xl md:text-5xl font-semibold mt-4">Projetos</h2>
-    <p class="text-ink-dim mt-3 max-w-2xl">Projetos publicados no GitHub, cada um com README e instruções para rodar. Foco em regras de negócio, segurança e consistência de dados.</p>
+    <p class="text-ink-dim mt-3 max-w-2xl">Os quatro projetos que melhor representam meu trabalho, seguidos dos demais. Todos estão no GitHub com README e instruções para rodar, com foco em regras de negócio, segurança e consistência de dados.</p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-5">
     {featured.map((p, i) => (
       <a href={p.link} target="_blank" rel="noopener noreferrer" class="panel panel-hover p-7 flex flex-col group" data-reveal style={`--d:${(i % 2) * 100}ms`}>
+        <span class="font-mono text-[10px] uppercase tracking-wider text-signal mb-3">Destaque {String(i + 1).padStart(2, "0")}</span>
         <div class="flex items-start justify-between gap-3">
           <h3 class="text-2xl font-semibold flex items-center gap-3"><span aria-hidden="true">{p.icon}</span>{p.title}</h3>
           <svg class="w-5 h-5 text-ink-faint group-hover:text-signal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={arrow}/></svg>
@@ -36,6 +38,23 @@ const arrow = "M7 17L17 7m0 0H8m9 0v9";
         <div class="flex flex-wrap gap-2 mt-auto pt-5">
           {p.tech.slice(0, 6).map((t) => <span class="tag">{t}</span>)}
           {p.tech.length > 6 && <span class="tag" title={p.tech.slice(6).join(", ")}>+{p.tech.length - 6}</span>}
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <h3 class="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint mt-16 mb-5" data-reveal>Outros projetos</h3>
+  <div class="grid sm:grid-cols-2 gap-4">
+    {more.map((p, i) => (
+      <a href={p.link} target="_blank" rel="noopener noreferrer" class="panel panel-hover p-5 flex flex-col group" data-reveal style={`--d:${(i % 2) * 80}ms`}>
+        <div class="flex items-start justify-between gap-3">
+          <h4 class="text-lg font-semibold flex items-center gap-2.5 leading-snug"><span aria-hidden="true">{p.icon}</span>{p.title}</h4>
+          <svg class="w-4 h-4 mt-1 shrink-0 text-ink-faint group-hover:text-signal transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d={arrow}/></svg>
+        </div>
+        <p class="text-sm text-ink-dim mt-3 leading-relaxed line-clamp-4">{p.solution}</p>
+        <p class="font-mono text-[11px] text-signal-soft mt-4">{p.architecture}</p>
+        <div class="flex flex-wrap gap-1.5 mt-auto pt-4">
+          {p.tech.slice(0, 5).map((t) => <span class="tag !text-[0.65rem]">{t}</span>)}
         </div>
       </a>
     ))}

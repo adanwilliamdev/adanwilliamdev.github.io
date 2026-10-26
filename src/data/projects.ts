@@ -1,7 +1,7 @@
 export interface Project {
   title: string;
   icon: string;
-  kind: "main" | "ai";
+  kind: "main" | "more" | "ai";
   problem: string;
   solution: string;
   metrics: string;
@@ -13,28 +13,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Ticketing System",
-    icon: "🎟️",
+    title: "AWOS Bank",
+    icon: "🏦",
     kind: "main",
-    problem: "Sistemas de venda de ingressos precisam lidar com muitos usuários disputando o mesmo assento sem gerar overbooking nem pagamento duplicado.",
-    solution: "Sistema de reservas e pagamentos no estilo Ticketmaster, pensado para alta concorrência: reserva temporária de 10 minutos (configurável) com expiração automática por job agendado.",
-    metrics: "Lock distribuído com Redisson/Redis somado a pessimistic locking no banco, pagamentos com chave de idempotência e testes unitários (JUnit 5 e Mockito) cobrindo reserva, expiração, idempotência e falha de gateway.",
-    tech: ["Java 21", "Spring Boot 3", "PostgreSQL", "Redis (Redisson)", "Flyway", "Docker", "JUnit 5", "Mockito"],
-    link: "https://github.com/adanwilliamdev/ticketing-system",
+    problem: "Um banco digital precisa garantir que cada operação fique registrada, inclusive as que falham, e que o schema do banco nunca divirja do código.",
+    solution: "Internet Banking com Java e Spring Boot: cadastro e login, dashboard com saldo e gráfico de entradas e saídas, extrato com filtros, chaves PIX, comprovantes e histórico de auditoria. Interface em Thymeleaf e Bootstrap, API documentada com Swagger.",
+    metrics: "Auditoria append-only (trigger do PostgreSQL bloqueia UPDATE e DELETE), com falhas gravadas em transação própria. Migrations Flyway com ddl-auto=validate, testes unitários e de integração (incluindo concorrência em transferências e Testcontainers com PostgreSQL real), cobertura com JaCoCo e CI/CD no GitHub Actions com smoke test e imagem publicada no GHCR.",
+    tech: ["Java 17", "Spring Boot 3.2", "Spring Security", "PostgreSQL 16", "Flyway", "Testcontainers", "JaCoCo", "GitHub Actions", "Docker", "Thymeleaf"],
+    link: "https://github.com/adanwilliamdev/awosbank",
     demo: null,
-    architecture: "Controller → Service → Redisson (lock distribuído) → PostgreSQL (pessimistic locking)",
-  },
-  {
-    title: "TaskFlow",
-    icon: "🧩",
-    kind: "main",
-    problem: "Dividir um sistema em serviços independentes exige resolver descoberta de serviços, roteamento e autenticação sem acoplar tudo.",
-    solution: "Gerenciador de tarefas em arquitetura de microsserviços: API Gateway, Service Discovery com Eureka e serviços separados de autenticação, usuários, tarefas e notificações, com frontend em React.",
-    metrics: "Um banco por serviço no mesmo PostgreSQL, JWT (HS256) validado localmente em cada serviço por filtro, sem chamada de rede entre serviços, e ambiente completo com um único docker compose up.",
-    tech: ["Java", "Spring Boot", "Spring Cloud Gateway", "Eureka", "Spring Security", "PostgreSQL", "React", "TypeScript", "Docker Compose"],
-    link: "https://github.com/adanwilliamdev/task-management",
-    demo: null,
-    architecture: "React → API Gateway → Auth / User / Task / Notification (Eureka) → PostgreSQL (1 banco por serviço)",
+    architecture: "Thymeleaf / Fetch API → Controllers → Services (+ auditoria via AOP) → JPA → PostgreSQL (Flyway, trigger append-only)",
   },
   {
     title: "Torque Gestão",
@@ -49,6 +37,18 @@ export const projects: Project[] = [
     architecture: "Thymeleaf / REST → Controllers → Services (regras de negócio) → JPA → PostgreSQL",
   },
   {
+    title: "Ticketing System",
+    icon: "🎟️",
+    kind: "main",
+    problem: "Sistemas de venda de ingressos precisam lidar com muitos usuários disputando o mesmo assento sem gerar overbooking nem pagamento duplicado.",
+    solution: "Sistema de reservas e pagamentos no estilo Ticketmaster, pensado para alta concorrência: reserva temporária de 10 minutos (configurável) com expiração automática por job agendado.",
+    metrics: "Lock distribuído com Redisson/Redis somado a pessimistic locking no banco, pagamentos com chave de idempotência e testes unitários (JUnit 5 e Mockito) cobrindo reserva, expiração, idempotência e falha de gateway.",
+    tech: ["Java 21", "Spring Boot 3", "PostgreSQL", "Redis (Redisson)", "Flyway", "Docker", "JUnit 5", "Mockito"],
+    link: "https://github.com/adanwilliamdev/ticketing-system",
+    demo: null,
+    architecture: "Controller → Service → Redisson (lock distribuído) → PostgreSQL (pessimistic locking)",
+  },
+  {
     title: "OrbNOC",
     icon: "🛰️",
     kind: "main",
@@ -61,9 +61,21 @@ export const projects: Project[] = [
     architecture: "Next.js → WebSocket / REST → FastAPI → PostgreSQL / Redis ← Worker (ICMP/TCP)",
   },
   {
+    title: "TaskFlow",
+    icon: "🧩",
+    kind: "more",
+    problem: "Dividir um sistema em serviços independentes exige resolver descoberta de serviços, roteamento e autenticação sem acoplar tudo.",
+    solution: "Gerenciador de tarefas em arquitetura de microsserviços: API Gateway, Service Discovery com Eureka e serviços separados de autenticação, usuários, tarefas e notificações, com frontend em React.",
+    metrics: "Um banco por serviço no mesmo PostgreSQL, JWT (HS256) validado localmente em cada serviço por filtro, sem chamada de rede entre serviços, e ambiente completo com um único docker compose up.",
+    tech: ["Java", "Spring Boot", "Spring Cloud Gateway", "Eureka", "Spring Security", "PostgreSQL", "React", "TypeScript", "Docker Compose"],
+    link: "https://github.com/adanwilliamdev/task-management",
+    demo: null,
+    architecture: "React → API Gateway → Auth / User / Task / Notification (Eureka) → PostgreSQL (1 banco por serviço)",
+  },
+  {
     title: "Itaú Java AI Order System",
     icon: "📦",
-    kind: "main",
+    kind: "more",
     problem: "Regras de pedido (ciclo de vida, validações, frete e notificações) viram um emaranhado de if/else quando não têm uma estrutura clara.",
     solution: "API de pedidos construída sobre quatro padrões de projeto (State, Chain of Responsibility, Strategy e Observer), com comandos de voz via Spring AI: transcrição de áudio e identificação de intenção. Desafio final do programa Itaú Java AI (DIO).",
     metrics: "Ciclo de vida PENDENTE → PAGO → ENVIADO → ENTREGUE, validações encadeadas (estoque, pagamento, frete), três estratégias de frete e notificações por e-mail, SMS e push.",
@@ -75,7 +87,7 @@ export const projects: Project[] = [
   {
     title: "Burger & Pizza House ERP",
     icon: "🍕",
-    kind: "main",
+    kind: "more",
     problem: "Pizzarias e hamburguerias controlam pedidos e ingredientes à mão, o que causa pedido aceito sem estoque e dificulta o controle financeiro.",
     solution: "ERP full stack para pizzarias e hamburguerias: pedidos com transições de status validadas, estoque de ingredientes com alerta de nível crítico, dashboard de faturamento e autenticação segura.",
     metrics: "Criação de pedido em transação atômica (checagem de estoque e baixa de ingredientes juntas), validação com Zod, JWT em cookie httpOnly, rate limit de login e 30 testes automatizados com Jest.",
@@ -83,6 +95,18 @@ export const projects: Project[] = [
     link: "https://github.com/adanwilliamdev/Burger-Pizza-House",
     demo: null,
     architecture: "Angular 20 → Express (Zod, JWT) → Prisma → SQLite",
+  },
+  {
+    title: "Study Planner",
+    icon: "📚",
+    kind: "more",
+    problem: "Quem estuda por conta própria perde o ritmo sem um lugar único para matérias, prazos e sessões de estudo.",
+    solution: "Aplicação full stack para organizar a rotina de estudos: matérias, tarefas com prioridade e prazo, cronograma semanal, timer Pomodoro, materiais por matéria e notificações de prazo em tempo real.",
+    metrics: "JWT com BCrypt, isolamento dos dados por usuário (toda leitura e escrita confere o dono do recurso), WebSocket/STOMP autenticado por JWT com notificações só para o dono da tarefa, Swagger e tema claro/escuro.",
+    tech: ["Java 17", "Spring Boot 3.2", "Spring Security (JWT)", "WebSocket / STOMP", "React 18", "Vite", "Tailwind CSS"],
+    link: "https://github.com/adanwilliamdev/study-planner",
+    demo: null,
+    architecture: "React (Vite) → REST + WebSocket/STOMP → Spring Boot (JWT) → H2",
   },
   {
     title: "Geo-Explorer",

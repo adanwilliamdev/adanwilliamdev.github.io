@@ -21,7 +21,7 @@ Requer Node.js 22.12 ou superior.
 
 | O quê | Arquivo |
 | --- | --- |
-| Projetos | `src/data/projects.ts` |
+| Projetos (campo `kind`: `main` = 4 destaques, `more` = outros, `ai` = IA) | `src/data/projects.ts` |
 | Experiência e formação | `src/components/Experience.astro` |
 | Stack | `src/components/TechStack.astro` |
 | Certificações | `src/components/Certifications.astro` |
