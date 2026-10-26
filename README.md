@@ -36,8 +36,8 @@ Sistema de reservas e pagamentos no estilo Ticketmaster, focado em **alta concor
 `Java 21` `Spring Boot` `PostgreSQL` `Redis` `Flyway` `Docker` `JUnit 5` `Mockito`
 
 ### 🛰️ [OrbNOC](https://github.com/adanwilliamdev/OrbNOC)
-Plataforma de monitoramento de equipamentos de rede nascida da minha rotina de NOC: status em tempo real via WebSocket, latência/jitter/perda de pacotes, alertas, SLA, notificações no Telegram, diagnóstico de rede e relatórios CSV/XLSX. A primeira versão foi em Java e depois reescrita em Python.
-`Python` `FastAPI` `PostgreSQL` `Redis` `WebSocket` `Next.js` `Docker`
+Plataforma de monitoramento de rede em tempo real, nascida da minha rotina de NOC: disponibilidade e latência de roteadores, switches, servidores e serviços, com monitoramento contínuo por **ICMP (ping)** e **TCP (porta)** — o host só é marcado offline após N falhas seguidas, o que elimina falsos alarmes. Tempo real via **WebSocket** (painel, mapa e wallboard se atualizam sozinhos), alertas de queda/recuperação/SLA com notificação opcional por **Telegram**, mapa de rede com layouts hierárquico/radial/em grade, **wallboard** em tela cheia para TVs de NOC, **relatórios de SLA** (24h, 7d, 30d) com exportação em CSV e Excel, e diagnóstico (ping, traceroute, DNS e teste de portas) a partir do servidor. Serviço Spring Boot único com threads virtuais, Argon2 para senhas, JWT em cookie `httpOnly` + `SameSite`, proteção CSRF por origem e comandos de diagnóstico executados sem shell.
+`Java 21` `Spring Boot` `Thymeleaf` `PostgreSQL` `Flyway` `WebSocket` `Apache POI` `Docker`
 
 ---
 
