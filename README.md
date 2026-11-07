@@ -1,9 +1,9 @@
 # Olá, eu sou o Adan William 👋
 
-**Desenvolvedor Java | Spring Boot | PostgreSQL | Docker**
-Busco minha primeira oportunidade como **Desenvolvedor Java Júnior** ou **Full Stack Júnior**.
+**Desenvolvedor Backend Java | Spring Boot | PostgreSQL | Docker**
+Busco minha primeira oportunidade como **Desenvolvedor Backend Java Júnior**.
 
-Mais de 5 anos em infraestrutura crítica de provedores de Internet (N2/N3, NOC) e hoje construo APIs e sistemas completos com foco em **regras de negócio, segurança e consistência de dados**. Meus projetos têm testes, Docker Compose para subir tudo com um comando e README com instruções para rodar.
+Mais de 5 anos em infraestrutura crítica de provedores de Internet (N2/N3, NOC) e hoje construo APIs REST e serviços backend com foco em **regras de negócio, segurança e consistência de dados**. Meus projetos têm testes, Docker Compose para subir tudo com um comando e README com instruções para rodar.
 
 🌐 [Portfólio](https://adanwilliamdev.github.io/) · 💼 [LinkedIn](https://www.linkedin.com/in/awosantos)
 
@@ -15,7 +15,6 @@ Mais de 5 anos em infraestrutura crítica de provedores de Internet (N2/N3, NOC)
 | --- | --- |
 | **Backend** | Java 17/21 · Spring Boot 3 · Spring Security (JWT, BCrypt, CSRF) · Spring Data JPA/Hibernate · Spring Cloud Gateway · Spring AI · WebSocket/STOMP |
 | **Dados e infra** | PostgreSQL · Redis (Redisson) · Flyway · Docker · Docker Compose · GitHub Actions (CI/CD) · Maven |
-| **Frontend** | React · TypeScript · Angular · Next.js · Vite · Tailwind CSS · Thymeleaf · Bootstrap |
 | **Qualidade** | JUnit 5 · Mockito · Testcontainers · JaCoCo · Swagger/OpenAPI |
 | **Também já usei** | Python (FastAPI) · Node.js (Express, Prisma) |
 
@@ -36,17 +35,17 @@ Sistema de reservas e pagamentos no estilo Ticketmaster, focado em **alta concor
 `Java 21` `Spring Boot` `PostgreSQL` `Redis` `Flyway` `Docker` `JUnit 5` `Mockito`
 
 ### 🛰️ [OrbNOC](https://github.com/adanwilliamdev/OrbNOC)
-Plataforma de monitoramento de rede em tempo real, nascida da minha rotina de NOC: disponibilidade e latência de roteadores, switches, servidores e serviços, com monitoramento contínuo por **ICMP (ping)** e **TCP (porta)** — o host só é marcado offline após N falhas seguidas, o que elimina falsos alarmes. Tempo real via **WebSocket** (painel, mapa e wallboard se atualizam sozinhos), alertas de queda/recuperação/SLA com notificação opcional por **Telegram**, mapa de rede com layouts hierárquico/radial/em grade, **wallboard** em tela cheia para TVs de NOC, **relatórios de SLA** (24h, 7d, 30d) com exportação em CSV e Excel, e diagnóstico (ping, traceroute, DNS e teste de portas) a partir do servidor. Serviço Spring Boot único com threads virtuais, Argon2 para senhas, JWT em cookie `httpOnly` + `SameSite`, proteção CSRF por origem e comandos de diagnóstico executados sem shell.
-`Java 21` `Spring Boot` `Thymeleaf` `PostgreSQL` `Flyway` `WebSocket` `Apache POI` `Docker`
+Plataforma de monitoramento de rede em tempo real, nascida da minha rotina de NOC: disponibilidade e latência de roteadores, switches, servidores e serviços, com monitoramento contínuo por **ICMP (ping)** e **TCP (porta)** — o host só é marcado offline após N falhas seguidas, o que elimina falsos alarmes. Tempo real via **WebSocket** (eventos publicados para painel, mapa e wallboard), alertas de queda/recuperação/SLA com notificação opcional por **Telegram**, mapa de rede com layouts hierárquico/radial/em grade, **wallboard** em tela cheia para TVs de NOC, **relatórios de SLA** (24h, 7d, 30d) com exportação em CSV e Excel, e diagnóstico (ping, traceroute, DNS e teste de portas) a partir do servidor. Serviço Spring Boot único com threads virtuais, Argon2 para senhas, JWT em cookie `httpOnly` + `SameSite`, proteção CSRF por origem e comandos de diagnóstico executados sem shell.
+`Java 21` `Spring Boot` `PostgreSQL` `Flyway` `WebSocket` `Apache POI` `Docker`
 
 ---
 
 ## 📂 Outros projetos
 
-- 🧩 **[TaskFlow (task-management)](https://github.com/adanwilliamdev/task-management)**: gerenciador de tarefas em **microsserviços** (API Gateway, Eureka, auth, usuários, tarefas e notificações), um banco por serviço e JWT validado localmente. `Spring Cloud` `React` `Docker Compose`
+- 🧩 **[TaskFlow (task-management)](https://github.com/adanwilliamdev/task-management)**: back-end de gerenciador de tarefas em **microsserviços** (API Gateway, Eureka, auth, usuários, tarefas e notificações), um banco por serviço e JWT validado localmente. `Spring Cloud` `Eureka` `Docker Compose`
 - 📦 **[Itaú Java AI Order System](https://github.com/adanwilliamdev/itau-java-ai-order-system)**: API de pedidos com **4 padrões de projeto** (State, Chain of Responsibility, Strategy, Observer) e comandos de voz via Spring AI. Desafio final do programa Itaú Java AI (DIO).
-- 🍕 **[Burger & Pizza House ERP](https://github.com/adanwilliamdev/Burger-Pizza-House)**: ERP para pizzarias e hamburguerias, com pedidos em transação atômica e baixa automática de estoque. `Node.js` `Angular` `Prisma`
-- 📚 **[Study Planner](https://github.com/adanwilliamdev/study-planner)**: organização da rotina de estudos com matérias, tarefas, cronograma, Pomodoro e **notificações em tempo real via WebSocket/STOMP**, autenticado por JWT. `Spring Boot` `React` `Vite`
+- 🍕 **[Burger & Pizza House ERP](https://github.com/adanwilliamdev/Burger-Pizza-House)**: API de ERP para pizzarias e hamburguerias, com pedidos em transação atômica e baixa automática de estoque. `Node.js` `Express` `Prisma`
+- 📚 **[Study Planner](https://github.com/adanwilliamdev/study-planner)**: API de rotina de estudos com matérias, tarefas, cronograma, Pomodoro e **notificações em tempo real via WebSocket/STOMP**, autenticada por JWT. `Spring Boot` `WebSocket` `JWT`
 
 ---
 
